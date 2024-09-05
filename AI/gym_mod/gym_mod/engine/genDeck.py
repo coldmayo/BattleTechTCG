@@ -22,12 +22,12 @@ def gen_deck(faction):
             if card_type != 0:
                 if "'Mech" in card_type and "Inner Sphere" in card_type:
                     if "Kurita" in card_type or ("Davion" not in card_type and "St. Ives" not in card_type and "Marik" not in card_type and "Liao" not in card_type and "Steiner" not in card_type and "ComStar" not in card_type):
-                        mechs.append({"id": card_data["id"][i], "Card Title": card_data["Card Title"][i], "Card Type": card_data["Card Type"][i], "Speed": card_data["Speed"][i], "Cost": card_data["Cost"][i], "Arm/Str/Att": card_data["Arm/Str/Att"][i], "Rarity": card_data["Rarity"][i]})
+                        mechs.append({"id": card_data["id"][i], "Card Title": card_data["Card Title"][i], "Card Type": card_data["Card Type"][i], "Speed": card_data["Speed"][i], "Cost": card_data["Cost"][i], "Arm/Str/Att": card_data["Arm/Str/Att"][i], "Rarity": card_data["Rarity"][i], "curr str": card_data["curr str"][i]})
                 elif card_data["Asset"][i] != 0:
                     #if "Davion" not in card_type and "St. Ives" not in card_type and "Marik" not in card_type and "Liao" not in card_type and "Steiner" not in card_type and "ComStar" not in card_type:
-                    res.append({"id": card_data["id"][i], "Card Title": card_data["Card Title"][i], "Asset": card_data["Asset"][i], "Card Type": card_data["Card Type"][i], "Speed": card_data["Speed"][i], "Cost": card_data["Cost"][i], "Arm/Str/Att": card_data["Arm/Str/Att"][i], "Rarity": card_data["Rarity"][i]})
+                    res.append({"id": card_data["id"][i], "Card Title": card_data["Card Title"][i], "Asset": card_data["Asset"][i], "Card Type": card_data["Card Type"][i], "Speed": card_data["Speed"][i], "Cost": card_data["Cost"][i], "Arm/Str/Att": card_data["Arm/Str/Att"][i], "Rarity": card_data["Rarity"][i], "curr str": 0})
                 elif "Mission" in card_type:
-                   miss.append({"id": card_data["id"][i], "Card Title": card_data["Card Title"][i], "Asset": card_data["Asset"][i], "Card Type": card_data["Card Type"][i], "Speed": card_data["Speed"][i], "Cost": card_data["Cost"][i], "Arm/Str/Att": card_data["Arm/Str/Att"][i], "Rarity": card_data["Rarity"][i]})
+                    miss.append({"id": card_data["id"][i], "Card Title": card_data["Card Title"][i], "Asset": card_data["Asset"][i], "Card Type": card_data["Card Type"][i], "Speed": card_data["Speed"][i], "Cost": card_data["Cost"][i], "Arm/Str/Att": card_data["Arm/Str/Att"][i], "Rarity": card_data["Rarity"][i], "curr str": 0})
 
     for i in np.random.choice(mechs, 24, replace = True):
         cards.append(i)
@@ -37,7 +37,10 @@ def gen_deck(faction):
 
     for i in np.random.choice(miss, 12, replace = True):
         cards.append(i)
-    #print(cards)
+    #print(random.shuffle(cards))
+    shuffle_num = np.random.randint(0, 10)
+    for i in range(shuffle_num):
+        random.shuffle(cards)
     return cards
 
 if __name__ == "__main__":

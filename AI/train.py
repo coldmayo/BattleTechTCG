@@ -26,7 +26,7 @@ n_actions = []
 
 env = gym.make("BT_TCG_v0", disable_env_checker=True, model_cards=gen_deck("kurita"), enemy_cards=gen_deck("kurita"))
 state = env.reset()
-model_deck = env.draw_phase("model")
+model_deck, reward, in_battle = env.draw_phase("model")
 n_actions = [60, 60, 60, 1, 60]
 
 n_observations = 3150
@@ -53,21 +53,27 @@ tau = 0.005
 #print(state.values())
 i = 0
 done = 0
+in_battle = 0
 
 while end == False:
     
-    enemy_deck = env.draw_phase("enemy")
+    enemy_deck, reward, in_battle = env.draw_phase("enemy")
+    if in_battle == False:
+        print("enemy draws 2 cards")
+
     if type(enemy_deck) == int:
         done = enemy_deck
-    #print("Enemy hand:", enemy_deck["hand"], "\n")
-    env.enemyTurn()
 
-    if game_num != 0:
-        model_deck = env.draw_phase("model")
+    #print("Enemy hand:", enemy_deck["hand"], "\n")
+    done, reward = env.enemyTurn()
+    if i != 0:
+        model_deck, reward, in_battle = env.draw_phase("model")
+        if in_battle == False:
+            print("model draws 2 cards")
         if type(model_deck) == int:
             done = model_deck
-
-    #print("Model hand:", model_deck["hand"], "\n")
+    if in_battle == False:
+        print("Enemy stockpile:", len(enemy_deck["stock"]), "Model stockpile:", len(model_deck["stock"]))
 
     if done == 0:
         if type(state) == dict:
@@ -75,6 +81,7 @@ while end == False:
             state = torch.tensor(flatten_list(state_vals), dtype=torch.float32, device=device).unsqueeze(0)
         else:
             state = torch.tensor(flatten_list(state), dtype=torch.float32, device=device).unsqueeze(0)
+
         action = select_action(env, state, i, policy_net, model_deck)
         action_dict = convertToDict(action)
 
@@ -100,6 +107,8 @@ while end == False:
             print("enemy won")
         elif done == 1:
             print("model won")
+        elif done == 0.5:
+            print("tied!")
 
         state = env.reset()
         done = 0
@@ -107,4 +116,5 @@ while end == False:
         end = True
         pbar.close()
     i += 1
+    
 env.close()
