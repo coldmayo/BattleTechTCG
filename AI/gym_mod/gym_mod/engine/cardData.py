@@ -1,4 +1,6 @@
 import json
+import pandas as pd
+import re
 
 """
 Data from: https://www.sarna.net/files/info/data/ccg/card_data/commanders_edition.zip
@@ -16,78 +18,87 @@ columns:
 
 def main():
     card_data = {"id": [], "Card Title": [], "Card Type": [], "Speed": [], "Cost": [], "Arm/Str/Att": [], "curr str": [], "Mass": [], "Asset": [], "Rarity": []}
+    #keys = ["Speed", "Cost", ""]
+    with open('commanders_edition.txt', mode = 'r', encoding = "unicode-escape") as f:
+        content = f.read()
+        cards = content.split('Card Title')[1:]
+        #print(cards)
 
-    f = open('commanders_edition.txt', mode = 'r', encoding = "unicode-escape")
-    lines = f.readlines()
-    f.close()
+    for i, card in enumerate(cards):
+        card_data['id'].append(i)
 
-    i = -1
+        lines = ['Card Title:' + card.strip()][0].split('\n')
+        for line in lines:
+            if ':' in line:
 
-    for line in lines:
-        
-        if line[0:13] == "Card Title:  ":
-            i += 1
-            name = line[13:len(line)-1]
-            card_data["id"].append(i)
-            card_data["Card Title"].append(name)
+                key, value = line.split(':', 1)
+                key = key.strip()
+                value = value.strip()
+                #print(key)
+                if key == 'Card Title':
+                    val = value[3:]
+                    card_data['Card Title'].append(val)
+                    splitname = val.split(" ")
+                    #print(value)
+                    if splitname[0] == "Support:":
+                        card_data["Asset"].append(splitname[1])
+                    else:
+                        card_data["Asset"].append(0)
+                elif key == 'Card Type':
+                    card_data['Card Type'].append(value.split(" - "))
+                elif key == 'Speed':
+                    card_data['Speed'].append(value)
+                elif key == 'Cost':
+                    toSave = [0, 0, 0, 0, 0, 0]
+                    costSplit = value.split('+')
 
-            splitname = name.split(' ')
-
-            if splitname[0] == "Support:":
-                card_data["Asset"].append(splitname[1])
-            else:
-                card_data["Asset"].append(0)
-            
-            if i != 0:
-                for keys in card_data.keys():
-                    if len(card_data["id"]) != len(card_data[keys]):
-                        card_data[keys].append(0)
-
-        elif line[0:13] == "Card Type:   ":
-            types = line[13:len(line)-1].split(" - ")
-            card_data["Card Type"].append(types)
-        elif line[0:13] == "Cost:        ":
-            toSave = [0, 0, 0, 0, 0, 0]
-            costSplit = line[13:len(line)-1].split("+")
-
-            for cost in costSplit:
-                if len(cost) == 1:
-                    toSave[0] = int(cost)
-                elif cost[1] == 'A':
-                    toSave[1] = int(cost[0])
-                elif cost[1] == 'L':
-                    toSave[2] = int(cost[0])
-                elif cost[1] == 'M':
-                    toSave[3] = int(cost[0])
-                elif cost[1] == 'T':
-                    toSave[4] = int(cost[0])
-                elif cost[1] == 'P':
-                    toSave[5] = int(cost[0])
+                    for cost in costSplit:
+                        if cost[-1].isnumeric():
+                            toSave[0] = int(cost)
+                        else:
+                            if cost[-1] == 'A':
+                                toSave[1] = int(cost[:-1])
+                            elif cost[-1] == 'L':
+                                toSave[2] = int(cost[:-1])
+                            elif cost[-1] == 'M':
+                                toSave[3] = int(cost[:-1])
+                            elif cost[-1] == 'T':
+                                toSave[4] = int(cost[:-1])
+                            elif cost[-1] == 'P':
+                                toSave[5] = int(cost[:-1])
+                                
+                    card_data['Cost'].append(toSave)
+                elif key == 'Arm/Str/Att':
+                    toSave = [0, 0, 0]
+                    armSplit = value.split('/')
+                    j = 0
                     
-            card_data["Cost"].append(toSave)
-        elif line[0:13] == "Arm/Str/Att: ":
-            toSave = [0, 0, 0]
-            armSplit = line[13:len(line)-1].split("/")
-            j = 0
-            for val in armSplit:
-                #print(val)
-                if val == '(n':
-                    j += 1
-                elif val[0] == '+' or val[0] == '-':
-                    toSave[j] = int(val[1])
-                    j += 1
-                elif val != 'a)' and val != '(n':
-                    #print(val)
-                    toSave[j] = int(val)
-                    j += 1
-            card_data["Arm/Str/Att"].append(toSave)
-            card_data["curr str"].append(toSave[1]+toSave[0])
-        elif line[0:13] == "Rarity:      ":
-            card_data["Rarity"].append(line[13:len(line)-1])
-        elif line[0:13] == "Mass:        ":
-            mass = line[13:len(line)-1].split(' ')
-            card_data["Mass"].append(int(mass[0]))
+                    for val in armSplit:
+                        if val == '(n':
+                            j += 1
+                        elif val[0] == '+' or val[0] == '-':
+                            toSave[j] = int(val[1])
+                            j += 1
+                        elif val != 'a)' and val != '(n':
+                            #print(val)
+                            toSave[j] = int(val)
+                            j += 1
 
+                    card_data['Arm/Str/Att'].append(toSave)
+                    card_data["curr str"].append(toSave[1]+toSave[0])
+
+                elif key == 'Mass':
+                    card_data['Mass'].append(value)
+                elif key == 'Rarity':
+                    card_data['Rarity'].append(value)
+
+        for j in card_data.keys():
+            if len(card_data[j]) < i + 1:
+                card_data[j].append(0)
+
+    for j in card_data.keys():
+        print(j, len(card_data[j]))
+    print(card_data)
     with open('cardData.json', 'w+') as f:
         json.dump(card_data, f)
 
