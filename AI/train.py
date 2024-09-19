@@ -39,7 +39,7 @@ optimizer = optim.AdamW(policy_net.parameters(), lr = 0.0025)
 
 memory = ReplayMemory(10000)
 
-numGames = 20
+numGames = 5
 
 pbar = tqdm(total=numGames)
 
@@ -74,7 +74,6 @@ while end == False:
             done = model_deck
     if in_battle == False:
         print("Enemy stockpile:", len(enemy_deck["stock"]), "Model stockpile:", len(model_deck["stock"]))
-
     if done == 0:
         if type(state) == dict:
             state_vals = np.array(list(state.values())).astype(float)
@@ -109,8 +108,10 @@ while end == False:
             print("model won")
         elif done == 0.5:
             print("tied!")
-
-        state = env.reset()
+        new_model_deck = gen_deck("kurita")
+        new_enemy_deck = gen_deck("kurita")
+        #print(new_model_deck)
+        state = env.reset(model_deck = new_model_deck, enemy_deck = new_enemy_deck)
         done = 0
     if game_num == numGames:
         end = True

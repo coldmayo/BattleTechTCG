@@ -97,8 +97,8 @@ def main():
                 card_data[j].append(0)
 
     for j in card_data.keys():
-        print(j, len(card_data[j]))
-    print(card_data)
+        #print(j, len(card_data[j]))
+    #print(card_data)
     with open('cardData.json', 'w+') as f:
         json.dump(card_data, f)
 

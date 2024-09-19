@@ -48,13 +48,20 @@ class BattleTechEnv(gym.Env):
 
         self.state = self.update_obs().values()
 
-    def reset(self):
+    def reset(self, model_deck = None, enemy_deck = None):
         self.done = 0
         self.model_counter = []
         self.enemy_counter = []
         self.in_battle = [0, "none", "none"]
-        self.model_deck = {"stock": self.model_deck["all cards"][6:], "hand": self.model_deck["all cards"][0:5], "const": [], "comm post": [], "scrap heap": [], "gaurd": [], "patrol": [], "all cards": self.model_deck["all cards"]}
-        self.enemy_deck = {"stock": self.enemy_deck["all cards"][6:], "hand": self.enemy_deck["all cards"][0:5], "const": [], "comm post": [], "scrap heap": [], "gaurd": [], "patrol": [], "all cards": self.enemy_deck["all cards"]}
+        if model_deck != None:
+            self.model_deck = {"stock": model_deck[6:], "hand": model_deck[0:5], "const": [], "comm post": [], "scrap heap": [], "gaurd": [], "patrol": [], "all cards": model_deck}
+        else:
+            self.model_deck = {"stock": self.model_deck["all cards"][6:], "hand": self.model_deck["all cards"][0:5], "const": [], "comm post": [], "scrap heap": [], "gaurd": [], "patrol": [], "all cards": self.model_deck["all cards"]}
+        if enemy_deck != None:
+            self.enemy_deck = {"stock": model_deck[6:], "hand": model_deck[0:5], "const": [], "comm post": [], "scrap heap": [], "gaurd": [], "patrol": [], "all cards": model_deck}
+        else:
+            self.enemy_deck = {"stock": self.enemy_deck["all cards"][6:], "hand": self.enemy_deck["all cards"][0:5], "const": [], "comm post": [], "scrap heap": [], "gaurd": [], "patrol": [], "all cards": self.enemy_deck["all cards"]}
+
         self.reward = 0
         
         return self.update_obs()
@@ -169,6 +176,36 @@ class BattleTechEnv(gym.Env):
             elif player == "enemy":
                 return self.model_deck, self.reward, True
 
+    def mechStatus(self):
+        print("Model: ")
+        print('patrol'+': ')
+        for i in range(len(self.model_deck['patrol'])):
+            print(self.model_deck['patrol'][i]["Card Title"], ":", self.model_deck['patrol'][i]["curr str"])
+        print('gaurd'+': ')
+        for i in range(len(self.model_deck['gaurd'])):
+            print(self.model_deck['gaurd'][i]["Card Title"], ":", self.model_deck['gaurd'][i]["curr str"])
+
+        print("Enemy: ")
+        print('patrol'+': ')
+        for i in range(len(self.enemy_deck['patrol'])):
+            print(self.enemy_deck['patrol'][i]["Card Title"], ":", self.enemy_deck['patrol'][i]["curr str"])
+
+        print('gaurd'+': ')
+        for i in range(len(self.enemy_deck['gaurd'])):
+            print(self.enemy_deck['gaurd'][i]["Card Title"], ":", self.enemy_deck['gaurd'][i]["curr str"])
+
+        print("Enemy stockpile:", len(self.enemy_deck["stock"]), "Model stockpile:", len(self.model_deck["stock"]))
+
+    def card_is_tapped(self, index, site, player):
+        if player == "model":
+            tapped = self.model_tap
+        elif player == "enemy":
+            tapped = self.enemy_tap
+
+        for i in tapped:
+            if i[0] == index and i[1] == site:
+                return True
+        return False
 
     def step(self, action):   # model turn
         if self.in_battle[0] == 0:
@@ -179,26 +216,69 @@ class BattleTechEnv(gym.Env):
 
             # deploy
             toDeploy = action["deploy"]
-            toMove = []
+            toMove1 = []
+            toMove2 = []
+            #print("The Model has the following cards in its hand:", self.model_deck["hand"])
             for i in range(len(toDeploy)):
                 card = self.model_deck["all cards"][i]
-                if "'Mech" in card["Card Type"] and toDeploy[i] == 1 and card["curr str"] != 0:
+                #print(card["Card Title"], card["Card Type"])
+                if "'Mech" in card["Card Type"] and toDeploy[i] == 1 and "Command" not in card["Card Type"]:
                     for j in range(len(self.model_deck["hand"])):
                         if self.model_deck["hand"][j]["id"] == card["id"]:
                             #self.model_deck = self.move_card(self.model_deck, "hand", "const", j)
-                            toMove.append(j)
-                            max = card["Cost"][0]
-                            print("Model deploys:", card["Card Title"])
-                            self.model_counter.append([card["id"], 1, max, len(self.model_counter)])   # TODO: make the assets do something
-                    self.model_deck = self.move_card(self.model_deck, "hand", "const", toMove)
+                            toMove1.append(j)
+                            max = card["Cost"][0]+card["Cost"][1]+card["Cost"][2]+card["Cost"][3]+card["Cost"][4]+card["Cost"][5]
+                            found = [0, 0, 0, 0, 0]
+                            for k in range(len(self.model_deck['comm post'])):
+                                com_c = self.model_deck["comm post"][k]
+                                if com_c["Card Title"] == "Support: Assembly" and found[0] == 0 and self.card_is_tapped(k, "comm post", "model") == False:
+                                    max -= card["Cost"][1]
+                                    reward += 0.1
+                                    found[0] = 1
+                                    self.model_tap.append(["comm post", k])
+                                    if card["Cost"][1] != 0:
+                                        print("Model tapped Support: Assembly card")
+                                elif com_c["Card Title"] == "Support: Logistics" and found[1] == 0 and self.card_is_tapped(k, "comm post", "model") == False:
+                                    max -= card["Cost"][2]
+                                    reward += 0.1
+                                    found[1] = 1
+                                    self.model_tap.append(["comm post", k])
+                                    if card["Cost"][2] != 0:
+                                        print("Model tapped Support: Logistics card")
+                                elif com_c["Card Title"] == "Support: Munitions" and found[2] == 0 and self.card_is_tapped(k, "comm post", "model") == False:
+                                    max -= card["Cost"][3]
+                                    reward += 0.1
+                                    found[2] = 1
+                                    self.model_tap.append(["comm post", k])
+                                    if card["Cost"][3] != 0:
+                                        print("Model tapped Support: Munitions card")
+                                elif com_c["Card Title"] == "Support: Tactics" and found[3] == 0 and self.card_is_tapped(k, "comm post", "model") == False:
+                                    max -= card["Cost"][4]
+                                    reward += 0.1
+                                    found[3] = 1
+                                    self.model_tap.append(["comm post", k])
+                                    if card["Cost"][4] != 0:
+                                        print("Model tapped Support: Tactics card")
+                                elif com_c["Card Title"] == "Support: Politics" and found[4] == 0 and self.card_is_tapped(k, "comm post", "model") == False:
+                                    max -= card["Cost"][5]
+                                    reward += 0.1
+                                    found[4] = 1
+                                    self.model_tap.append(["comm post", k])
+                                    if card["Cost"][5] != 0:
+                                        print("Model tapped Support: Politics card")
+
+                            print("Model starts construction on:", card["Card Title"], "with", max, "counters")
+                            self.model_counter.append([card["id"], 0, max, len(self.model_counter)])   # TODO: make the assets do something
                     
                 elif "Command" in card["Card Type"] and toDeploy[i] == 1:
                     for j in range(len(self.model_deck["hand"])):
                         if self.model_deck["hand"][j]["id"] == card["id"]:
+                            print("Model deploys:", card["Card Title"])
                             #self.model_deck = self.move(self.model_deck, "hand", "comm post", j)
-                            toMove.append(j)
-                    self.model_deck = self.move_card(self.model_deck, "hand", "comm post", toMove)
+                            toMove2.append(j)
 
+            self.model_deck = self.move_card(self.model_deck, "hand", "const", toMove1)
+            self.model_deck = self.move_card(self.model_deck, "hand", "comm post", toMove2)
             # repair/reload phase
 
             if len(self.model_deck["patrol"]) > 0 and "Support: Assembly" in self.model_deck["comm post"]:
@@ -250,8 +330,10 @@ class BattleTechEnv(gym.Env):
                             print("Model did", attack, "damage to the enemy's stockpile")
                             for i in range(attack):
                                 self.enemy_deck = self.move_card(self.enemy_deck, "stock", "scrap heap", 0)
+                            self.mechStatus()
                         else:
                             print("Enemy mechs on gaurd, battle started")
+                            self.mechStatus()
                             # battle starts
                             self.in_battle[0] = 1
                             self.in_battle[1] = "patrol"
@@ -335,25 +417,7 @@ class BattleTechEnv(gym.Env):
                 self.model_deck = self.move_card(self.model_deck, self.in_battle[1], "scrap heap", toMove)
 
                 # show mechs and their current strength
-                print("Model: ")
-                print(self.in_battle[1]+': ')
-                for i in range(len(self.model_deck[self.in_battle[1]])):
-                    print(self.model_deck[self.in_battle[1]][i]["Card Title"], ":", self.model_deck[self.in_battle[1]][i]["curr str"])
-                print(self.in_battle[2]+': ')
-                for i in range(len(self.model_deck[self.in_battle[2]])):
-                    print(self.model_deck[self.in_battle[2]][i]["Card Title"], ":", self.model_deck[self.in_battle[2]][i]["curr str"])
-
-                print("Enemy: ")
-                print(self.in_battle[2]+': ')
-                for i in range(len(self.enemy_deck[self.in_battle[2]])):
-                    print(self.enemy_deck[self.in_battle[2]][i]["Card Title"], ":", self.enemy_deck[self.in_battle[2]][i]["curr str"])
-
-                print(self.in_battle[1]+': ')
-                for i in range(len(self.enemy_deck[self.in_battle[1]])):
-                    print(self.enemy_deck[self.in_battle[1]][i]["Card Title"], ":", self.enemy_deck[self.in_battle[1]][i]["curr str"])
-
-
-                print("Enemy stockpile:", len(self.enemy_deck["stock"]), "Model stockpile:", len(self.model_deck["stock"]))
+                self.mechStatus()
 
                 # combat is now over
                 print("Model will do", self.attacksToResolve["model"], "damage")
@@ -374,17 +438,59 @@ class BattleTechEnv(gym.Env):
             self.enemy_tap = []
 
             # deploy
-            
+            #print("The Enemy has the following cards in its hand:", self.enemy_deck["hand"])
             for i in range(len(self.enemy_deck["hand"])):
                 i = int(np.random.choice(len(self.enemy_deck["hand"]), 1))
-                if "'Mech" in self.enemy_deck["hand"][i]["Card Type"] and self.enemy_deck["hand"][i]["curr str"] != 0:
-                    cost = self.enemy_deck["hand"][i]["Cost"][0]
+                #print(self.enemy_deck["hand"][i]["Card Title"], self.enemy_deck["hand"][i]["Card Type"])
+                if "'Mech" in self.enemy_deck["hand"][i]["Card Type"] and "Command" not in self.enemy_deck["hand"][i]["Card Type"]:
+                    cost = 0
+                    for n in range(len(self.enemy_deck["hand"][i]["Cost"])):
+                        cost += n
+
+                    found = [0, 0, 0, 0, 0]
+                    
+                    for k in range(len(self.enemy_deck["comm post"])):
+                        card = self.enemy_deck["comm post"][k]
+                        if card["Card Title"] == "Support: Assembly" and found[0] == 0 and self.card_is_tapped(k, "comm post", "enemy") == False:
+                            cost -= self.enemy_deck["hand"][i]["Cost"][1]
+                            found[0] = 1
+                            self.enemy_tap.append(["comm post", k])
+                            if self.enemy_deck["hand"][i]["Cost"][1] != 0:
+                                print("Enemy tapped Support: Assembly")
+                                
+                        elif card["Card Title"] == "Support: Logistics" and found[1] == 0 and self.card_is_tapped(k, "comm post", "enemy") == False:
+                            cost -= self.enemy_deck["hand"][i]["Cost"][2]
+                            found[1] = 1
+                            self.enemy_tap.append(["comm post", k])
+                            if self.enemy_deck["hand"][i]["Cost"][2] != 0:
+                                print("Enemy tapped Support: Logistics")
+                                
+                        elif card["Card Title"] == "Support: Munitions" and found[2] == 0 and self.card_is_tapped(k, "comm post", "enemy") == False:
+                            cost -= self.enemy_deck["hand"][i]["Cost"][3]
+                            found[2] = 1
+                            self.enemy_tap.append(["comm post", k])
+                            if self.enemy_deck["hand"][i]["Cost"][3] != 0:
+                                print("Enemy tapped Support: Munitions")
+                                
+                        elif card["Card Title"] == "Support: Tactics" and found[3] == 0 and self.card_is_tapped(k, "comm post", "enemy") == False:
+                            cost -= self.enemy_deck["hand"][i]["Cost"][4]
+                            found[3] = 1
+                            self.enemy_tap.append(["comm post", k])
+                            if self.enemy_deck["hand"][i]["Cost"][4] != 0:
+                                print("Enemy tapped Support: Tactics")
+                                
+                        elif card["Card Title"] == "Support: Politics" and found[4] == 0 and self.card_is_tapped(k, "comm post", "enemy") == False:
+                            cost -= self.enemy_deck["hand"][i]["Cost"][5]
+                            found[4] = 1
+                            self.enemy_tap.append(["comm post", k])
+                            if self.enemy_deck["hand"][i]["Cost"][5] != 0:
+                                print("Enemy tapped Support: Politics")
                     id = self.enemy_deck["hand"][i]["id"]
-                    print("Enemy deploys", self.enemy_deck["hand"][i]["Card Title"])
+                    print("Enemy starts construction on:", self.enemy_deck["hand"][i]["Card Title"], "with", cost, "counters")
                     self.enemy_deck = self.move_card(self.enemy_deck, "hand", "const", i)
-                    self.enemy_counter.append([id, 1, cost, i])
+                    self.enemy_counter.append([id, 0, cost, i])
                 elif "Command" in self.enemy_deck["hand"][i]["Card Type"]: 
-                    print("Enemy deploys", self.enemy_deck["hand"][i]["Card Title"])
+                    print("Enemy deploys:", self.enemy_deck["hand"][i]["Card Title"])
                     self.enemy_deck = self.move_card(self.enemy_deck, "hand", "comm post", i)
                 
             # repair/reload phase (repair 1 mech per turn, if allowed)
@@ -425,6 +531,7 @@ class BattleTechEnv(gym.Env):
                     else:
                         # start battle
                         print("Battle started...")
+                        self.mechStatus()
                         self.in_battle[0] = 1
                         self.in_battle[2] = "patrol"
                         self.in_battle[1] = "gaurd"
@@ -493,13 +600,7 @@ class BattleTechEnv(gym.Env):
                 self.model_deck = self.move_card(self.model_deck, self.in_battle[1], "scrap heap", toMove)
 
                 # show mechs and their current strength
-                print("Model: ")
-                for i in self.model_deck[self.in_battle[1]]:
-                    print(i["Card Title"], ":", i["curr str"])
-
-                print("Enemy: ")
-                for i in self.enemy_deck[self.in_battle[2]]:
-                    print(i["Card Title"], ":", i["curr str"])
+                self.mechStatus()
 
                 print("Enemy stockpile:", len(self.enemy_deck["stock"]), "Model stockpile:", len(self.model_deck["stock"]))
                 # combat is now over
