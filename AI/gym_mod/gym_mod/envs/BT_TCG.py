@@ -126,18 +126,19 @@ class BattleTechEnv(gym.Env):
                 
         return self.state
 
-    def move_card(self, deck, pile1, pile2, i):
+    def move_card(self, player, pile1, pile2, i):
+        deck = self.model_deck if player == "model" else self.enemy_deck
         try:
-            if type(i) == int:
+            if isinstance(i, int):
                 deck[pile2].append(deck[pile1][i])
                 del deck[pile1][i]
-            elif type(i) == list:
+            elif isinstance(i, list):
                 for item in sorted(i, reverse=True):
                     deck[pile2].append(deck[pile1][item])
                     del deck[pile1][item]
-            return deck
         except IndexError:
-            return deck
+            pass
+        return deck
 
     def check_game(self):
         if len(self.model_deck["stock"]) == 0 and len(self.enemy_deck["stock"]) == 0:
@@ -156,16 +157,16 @@ class BattleTechEnv(gym.Env):
         if self.in_battle[0] == 0:
             if player == "model":
                 try:
-                    self.model_deck = self.move_card(self.model_deck, "stock", "hand", 0)
-                    self.model_deck = self.move_card(self.model_deck, "stock", "hand", 0)
+                    self.model_deck = self.move_card("model", "stock", "hand", 0)
+                    self.model_deck = self.move_card("model", "stock", "hand", 0)
                     return self.model_deck, self.reward, False
                 except IndexError:
                     self.reward -= -1
                     return -1, self.reward, False
             elif player == "enemy":
                 try:
-                    self.enemy_deck = self.move_card(self.model_deck, "stock", "hand", 0)
-                    self.enemy_deck = self.move_card(self.model_deck, "stock", "hand", 0)
+                    self.enemy_deck = self.move_card("enemy", "stock", "hand", 0)
+                    self.enemy_deck = self.move_card("enemy", "stock", "hand", 0)
                     return self.enemy_deck, self.reward, False
                 except IndexError:
                     self.reward += 1
@@ -277,8 +278,28 @@ class BattleTechEnv(gym.Env):
                             #self.model_deck = self.move(self.model_deck, "hand", "comm post", j)
                             toMove2.append(j)
 
-            self.model_deck = self.move_card(self.model_deck, "hand", "const", toMove1)
-            self.model_deck = self.move_card(self.model_deck, "hand", "comm post", toMove2)
+            self.model_deck = self.move_card("model", "hand", "const", toMove1)
+            self.model_deck = self.move_card("model", "hand", "comm post", toMove2)
+
+            # add counters from remaining resources
+            toMove = []
+            resources = 0
+            for i in range(len(self.model_deck["comm post"])):
+                if self.model_deck["comm post"][i]["Card Title"][0:7] == "Support" and self.card_is_tapped(i, "comm post", "model") == False:
+                    resources += 1
+            j = 0
+            for i in range(resources):
+                if len(self.model_counter) > j and len(self.model_counter) > 0:
+                    self.model_counter[j][1] += 1
+                    if self.model_counter[j][1]  == self.model_counter[j][2]:
+                        for k in range(len(self.model_deck['const'])):
+                            if self.model_counter[j][0] == self.model_deck['const'][k]['id']:
+                                print("Model moved", self.model_deck["const"][k]["Card Title"], "to patrol")
+                                self.model_counter.remove(self.model_counter[j])
+                                toMove.append(k)
+                                break
+            self.model_deck = self.move_card("model", "const", "patrol", toMove)
+
             # repair/reload phase
 
             if len(self.model_deck["patrol"]) > 0 and "Support: Assembly" in self.model_deck["comm post"]:
@@ -307,7 +328,7 @@ class BattleTechEnv(gym.Env):
                         done = 1
                         #self.move_card(self.model_deck, "patrol", "gaurd", j)
 
-                self.model_deck = self.move_card(self.model_deck, "patrol", "gaurd", toMove)
+                self.model_deck = self.move_card("model", "patrol", "gaurd", toMove)
 
                 if done == 0:
                     for j in range(len(self.model_deck["gaurd"])):
@@ -315,7 +336,7 @@ class BattleTechEnv(gym.Env):
                             #self.move_card(self.model_deck, "gaurd", "patrol", j)
                             print("Model moves", self.model_deck["gaurd"][j]["Card Title"], "to patrol")
                             toMove.append(j)
-                    self.model_deck = self.move_card(self.model_deck, "gaurd", "patrol", toMove)
+                    self.model_deck = self.move_card("model", "gaurd", "patrol", toMove)
                 
             if action["attack"] >= 1:
                 print("Model attempts an attack")
@@ -328,8 +349,10 @@ class BattleTechEnv(gym.Env):
                             for i in self.model_deck["patrol"]:
                                 attack += i["Arm/Str/Att"][2]
                             print("Model did", attack, "damage to the enemy's stockpile")
+                            #print(self.model_deck, "\n\n", self.enemy_deck, "\n")
                             for i in range(attack):
-                                self.enemy_deck = self.move_card(self.enemy_deck, "stock", "scrap heap", 0)
+                                print(len(self.enemy_deck["stock"]), len(self.model_deck["stock"]))
+                                self.enemy_deck = self.move_card("enemy", "stock", "scrap heap", 0)
                             self.mechStatus()
                         else:
                             print("Enemy mechs on gaurd, battle started")
@@ -350,17 +373,7 @@ class BattleTechEnv(gym.Env):
             elif action["attack"] == 0 and len(self.model_deck["patrol"]) > 0:
                 self.reward -= 0.5
 
-            # add counters
-            toMove = []
-
-            for i in range(len(self.model_counter)):
-                self.model_counter[i][1] += 1
-                if self.model_counter[i][1]  == self.model_counter[i][2]:
-                    for j in range(len(self.model_deck['const'])):
-                        if self.model_counter[i][0] == self.model_deck['const'][j]['id']:
-                            print("Enemy moved", self.model_deck["const"][j]["Card Title"], "to patrol")
-                            toMove.append(j)
-            self.model_deck = self.move_card(self.model_deck, "const", "patrol", toMove)
+            
 
         else:
             
@@ -380,9 +393,10 @@ class BattleTechEnv(gym.Env):
                     if self.model_deck[self.in_battle[1]][j]["curr str"] == 0:
                         j += 1
                         if j == len(self.model_deck[self.in_battle[1]]):
+                            print("All Mechs gone, doing damage to Model stockpile...")
                             #self.model_deck = self.move_card(self.model_deck, "stock", "scrap heap", self.attacksToResolve["enemy"]-i)
                             for i in range(self.attacksToResolve["enemy"]-i):
-                                self.model_deck = self.move_card(self.model_deck, "stock", "scrap heap", 0)
+                                self.model_deck = self.move_card("model", "stock", "scrap heap", 0)
                             break
 
                 
@@ -392,8 +406,9 @@ class BattleTechEnv(gym.Env):
                     if self.enemy_deck[self.in_battle[2]][k]["curr str"] == 0:
                         k += 1
                         if k == len(self.enemy_deck[self.in_battle[2]]):
+                            print("All Mechs gone, doing damage to Enemy stockpile...")
                             for i in range(self.attacksToResolve["model"]-i):
-                                self.enemy_deck = self.move_card(self.enemy_deck, "stock", "scrap heap", 0)
+                                self.enemy_deck = self.move_card("enemy", "stock", "scrap heap", 0)
                             break
 
                 # scrap dead mechs
@@ -405,19 +420,16 @@ class BattleTechEnv(gym.Env):
                         #self.enemy_deck = self.move_card(self.enemy_deck, self.in_battle[2], "scrap heap", i)
                         print(self.enemy_deck[self.in_battle[2]][i]["Card Title"], "is getting scrapped")
                         toMove.append(i)
-                self.enemy_deck = self.move_card(self.enemy_deck, self.in_battle[2], "scrap heap", toMove)
+                self.enemy_deck = self.move_card("enemy", self.in_battle[2], "scrap heap", toMove)
                 
                 toMove = []
                 for i in range(len(self.model_deck[self.in_battle[1]])):
                     if self.model_deck[self.in_battle[1]][i]["curr str"] <= 0:
                         #self.model_deck = self.move_card(self.model_deck, self.in_battle[1], "scrap heap", i)
                         toMove.append(i)
-                        print(self.enemy_deck[self.in_battle[1]][i]["Card Title"], "is getting scrapped")
+                        print(self.model_deck[self.in_battle[1]][i]["Card Title"], "is getting scrapped")
 
-                self.model_deck = self.move_card(self.model_deck, self.in_battle[1], "scrap heap", toMove)
-
-                # show mechs and their current strength
-                self.mechStatus()
+                self.model_deck = self.move_card("model", self.in_battle[1], "scrap heap", toMove)
 
                 # combat is now over
                 print("Model will do", self.attacksToResolve["model"], "damage")
@@ -426,7 +438,8 @@ class BattleTechEnv(gym.Env):
                 self.attacksToResolve["model"] = 0
                 self.attacksToResolve["enemy"] = 0
 
-                
+                # show mechs and their current strength
+                self.mechStatus()
         self.check_game()
         return self.update_obs(), self.reward, self.done, False, {}
 
@@ -487,12 +500,32 @@ class BattleTechEnv(gym.Env):
                                 print("Enemy tapped Support: Politics")
                     id = self.enemy_deck["hand"][i]["id"]
                     print("Enemy starts construction on:", self.enemy_deck["hand"][i]["Card Title"], "with", cost, "counters")
-                    self.enemy_deck = self.move_card(self.enemy_deck, "hand", "const", i)
+                    self.enemy_deck = self.move_card("enemy", "hand", "const", i)
                     self.enemy_counter.append([id, 0, cost, i])
                 elif "Command" in self.enemy_deck["hand"][i]["Card Type"]: 
                     print("Enemy deploys:", self.enemy_deck["hand"][i]["Card Title"])
-                    self.enemy_deck = self.move_card(self.enemy_deck, "hand", "comm post", i)
-                
+                    self.enemy_deck = self.move_card("enemy", "hand", "comm post", i)
+
+
+            # add counters from remaining resources
+            toMove = []
+            resources = 0
+            for i in range(len(self.enemy_deck["comm post"])):
+                if self.enemy_deck["comm post"][i]["Card Title"][0:7] == "Support" and self.card_is_tapped(i, "comm post", "enemy") == False:
+                    resources += 1
+            j = 0
+            for i in range(resources):
+                if len(self.enemy_counter) > j and len(self.enemy_counter) > 0:
+                    self.enemy_counter[j][1] += 1
+                    if self.enemy_counter[j][1]  == self.enemy_counter[j][2]:
+                        for k in range(len(self.enemy_deck['const'])):
+                            if self.enemy_counter[j][0] == self.enemy_deck['const'][k]['id']:
+                                print("Enemy moved", self.enemy_deck["const"][k]["Card Title"], "to patrol")
+                                self.enemy_counter.remove(self.enemy_counter[j])
+                                toMove.append(k)
+                                break
+            self.enemy_deck = self.move_card("enemy", "const", "patrol", toMove)
+
             # repair/reload phase (repair 1 mech per turn, if allowed)
             if len(self.enemy_deck["patrol"]) > 0 and "Support: Assembly" in self.enemy_deck["comm post"]:
                 choi = np.random.choice(len(self.enemy_deck["patrol"]), 1)
@@ -509,12 +542,12 @@ class BattleTechEnv(gym.Env):
             if len(self.enemy_deck["patrol"]) > 1:
                 choi = int(np.random.choice(len(self.enemy_deck["patrol"]), 1))
                 print("Enemy moved", self.enemy_deck["patrol"][choi]["Card Title"], "to gaurd")
-                self.enemy_deck = self.move_card(self.enemy_deck, "patrol", "gaurd", choi)
+                self.enemy_deck = self.move_card("enemy", "patrol", "gaurd", choi)
                 
             if len(self.enemy_deck["gaurd"]) > 1:
                 choi = int(np.random.choice(len(self.enemy_deck["gaurd"]), 1))
                 print("Enemy moved", self.enemy_deck["gaurd"][choi]["Card Title"], "to patrol")
-                self.enemy_deck = self.move_card(self.enemy_deck, "gaurd", "patrol", choi)
+                self.enemy_deck = self.move_card("enemy", "gaurd", "patrol", choi)
 
             choi = np.random.choice(1, 1)
             if choi == 1 and len(self.enemy_deck["patrol"]):
@@ -527,7 +560,7 @@ class BattleTechEnv(gym.Env):
                             attack += i["Arm/Str/Att"][2]
                         print("Enemy does", attack, "damage to model's stockpile")
                         for i in range(attack):
-                            self.model_deck = self.move_card(self.model_cards, "stock", "scrap heap", 0)
+                            self.model_deck = self.move_card("model", "stock", "scrap heap", 0)
                     else:
                         # start battle
                         print("Battle started...")
@@ -540,17 +573,7 @@ class BattleTechEnv(gym.Env):
                             for i in self.enemy_deck["patrol"]:
                                 self.attacksToResolve["model"] += i["Arm/Str/Att"][2]
                             self.in_battle[0] += 1
-            # add counters
-            toMove = []
 
-            for i in range(len(self.enemy_counter)):
-                self.enemy_counter[i][1] += 1
-                if self.enemy_counter[i][1]  == self.enemy_counter[i][2]:
-                    for j in range(len(self.enemy_deck['const'])):
-                        if self.enemy_counter[i][0] == self.enemy_deck['const'][j]['id']:
-                            print("Enemy moved", self.enemy_deck["const"][j]["Card Title"], "to patrol")
-                            toMove.append(j)
-            self.enemy_deck = self.move_card(self.enemy_deck, "const", "patrol", toMove)
         else:
             if self.in_battle[0] < 3:
                 for i in self.enemy_deck[self.in_battle[2]]:
@@ -565,8 +588,9 @@ class BattleTechEnv(gym.Env):
                     if self.model_deck[self.in_battle[1]][j]["curr str"] == 0:
                         j += 1
                         if j == len(self.model_deck[self.in_battle[1]]):
+                            print("All Mechs gone, doing damage to Model stockpile...")
                             for i in range(self.attacksToResolve["enemy"]-i):
-                                self.model_deck = self.move_card(self.model_deck, "stockpile", "scrap heap", 0)
+                                self.model_deck = self.move_card("model", "stockpile", "scrap heap", 0)
                             break
 
                 
@@ -576,8 +600,9 @@ class BattleTechEnv(gym.Env):
                     if self.enemy_deck[self.in_battle[2]][k]["curr str"] == 0:
                         k += 1
                         if k == len(self.enemy_deck[self.in_battle[2]]):
+                            print("All Mechs gone, doing damage to Enemy stockpile...")
                             for i in range(self.attacksToResolve["model"]-i):
-                                self.enemy_deck = self.move_card(self.enemy_deck, "stockpile", "scrap heap", 0)
+                                self.enemy_deck = self.move_card("enemy", "stockpile", "scrap heap", 0)
                             break
 
                 # scrap dead mechs
@@ -588,7 +613,7 @@ class BattleTechEnv(gym.Env):
                         #self.enemy_deck = self.move_card(self.enemy_deck, self.in_battle[2], "scrap heap", i)
                         print(self.enemy_deck[self.in_battle[2]][i]["Card Title"], "is getting scrapped")
                         toMove.append(i)
-                self.enemy_deck = self.move_card(self.enemy_deck, self.in_battle[2], "scrap heap", toMove)
+                self.enemy_deck = self.move_card("enemy", self.in_battle[2], "scrap heap", toMove)
                 
                 toMove = []
                 for i in range(len(self.model_deck[self.in_battle[1]])):
@@ -597,7 +622,7 @@ class BattleTechEnv(gym.Env):
                         print(self.model_deck[self.in_battle[1]][i]["Card Title"], "is getting scrapped")
                         toMove.append(i)
                         
-                self.model_deck = self.move_card(self.model_deck, self.in_battle[1], "scrap heap", toMove)
+                self.model_deck = self.move_card("model", self.in_battle[1], "scrap heap", toMove)
 
                 # show mechs and their current strength
                 self.mechStatus()

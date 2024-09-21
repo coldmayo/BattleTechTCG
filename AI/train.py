@@ -60,6 +60,7 @@ while end == False:
     enemy_deck, reward, in_battle = env.draw_phase("enemy")
     if in_battle == False:
         print("enemy draws 2 cards")
+        print("Enemy stockpile:", len(enemy_deck["stock"]), "Model stockpile:", len(model_deck["stock"]))
 
     if type(enemy_deck) == int:
         done = enemy_deck

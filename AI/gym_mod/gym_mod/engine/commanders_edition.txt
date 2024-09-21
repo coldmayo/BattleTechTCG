@@ -1,12 +1,3 @@
-BattleTech(R): Commander's Edition(TM) Spoiler List
-Wizards of the Coast, Inc.
-(Released August 11, 1998)
-
-Key: {R} - Resource
-     {T} - Tap
-     n/a - "not applicable"
-
-
 Card Title:  Accelerated Turnaround
 Card Type:   Command
 Cost:        2+2L
