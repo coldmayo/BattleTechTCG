@@ -78,13 +78,17 @@ def random_action(model_deck):
     heal_mech = 0
     attack = 0
     move_mech = np.zeros(len(model_deck["all cards"]))
-
+    count = 0
+    
     for i in range(len(model_deck["hand"])):
         if "Mission" not in model_deck["hand"][i]["Card Type"]:
             choi = int(np.random.choice([0, 1], 1))
 
             if choi == 1:
                 deploy[find_id(model_deck["hand"][i], model_deck)] = 1
+                count += 1
+                if count == 2:
+                    break
 
     avail = []
     for i in model_deck["hand"]:
@@ -157,15 +161,21 @@ def select_action(env, state, steps_done, policy_net, model_deck):
                 else:
                     q_vals = q_vals.numpy().tolist()
                 if i == 0:   # deploy action
-                    chosen = []
+                    chosen = np.zeros(len(model_deck["all cards"]))
                     q_vals = np.array(filter_q(model_deck, q_vals))
 
-                    for i in q_vals:
-                        if i > 0.5:
-                            chosen.append(1)
-                        else:
-                            chosen.append(0)
-                    action.append(chosen)
+                    high = 0
+                    sec_high = 0
+
+                    for i in range(len(q_vals)):
+                        if i > high:
+                            sec_high = high
+                            high = i
+                        elif i > sec_high:
+                            sec_high = i
+                    chosen[high] = 1
+                    chosen[sec_high] = 1
+                    action.append(chosen.tolist())
                 elif i == 1:   # mission action
                         
                     q_vals = filter_q(model_deck, q_vals, "mission")

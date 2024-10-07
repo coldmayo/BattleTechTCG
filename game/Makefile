@@ -1,0 +1,5 @@
+CC = gcc
+
+TARGET = main
+
+

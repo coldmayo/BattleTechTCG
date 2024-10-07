@@ -6,6 +6,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include "searchCard.h"
+#include "gen_deck.h"
 
 void show_select(int choice) {
     printf("\e[1;1H\e[2J");
@@ -65,7 +66,14 @@ void execute(int choice) {
 			sleep(2);
         	break;
 		case 1:
-    		system("cd ../AI ; ./train.sh");
+			char iter_num[50];
+			char enter[50] = "cd ../AI ; ./train.sh";
+			printf("How many iterations?: ");
+			if (fgets(iter_num, sizeof(iter_num), stdin) != NULL) {
+				strcat(enter, " ");
+				strcat(enter, iter_num);
+			}
+    		system(enter);
     		sleep(2);
     		break;
     	case 2:
@@ -76,7 +84,8 @@ void execute(int choice) {
             search_card();
             break;
         case 4:
-            printf("In construction\n");
+            //printf("In construction\n");
+			deck();
             sleep(2);
             break;
 	}
