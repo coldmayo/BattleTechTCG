@@ -33,17 +33,30 @@ char * slice_str(char * str, char * buffer, int start, int end) {
 
 char ** get_card_names() {
 	FILE *file;
-	char ** names = malloc(400 * sizeof(char *));
+	char ** names = malloc(1000 * sizeof(char *));
 	char * line = NULL;
-	char buff[60];
+	char buff[400];
 	size_t len = 0;
 	ssize_t read;
 	int i = 0;
-	file = fopen("../AI/gym_mod/gym_mod/engine/commanders_edition.txt", "r");
+	file = fopen("../AI/gym_mod/gym_mod/engine/btech-all-list.txt", "r");
 	while ((read = getline(&line, &len, file)) != -1) {
 		
-		if (strcmp(slice_str(line, buff, 0, 9), "Card Title") == 0) {
-			char * name = slice_str(line, buff, 13, strlen(line));
+		if (strcmp(slice_str(line, buff, 0, 10), "_____ _____") == 0) {
+			char * name = slice_str(line, buff, 19, strlen(line));
+			char one;
+			char two = '\0';
+			int j;
+			for (j = 0; j < strlen(name); j++) {
+				if (j > 0) {
+					two = one;
+				}
+				one = name[j];
+				if (one == ')' || (two == ' ' && one == ' ')) {
+					break;
+				}
+			}
+			name = slice_str(name, buff, 0, j);
 			//printf("%s\n", name);
 			names[i] = strdup(name);
 			i++;
@@ -114,7 +127,6 @@ int show_card(char ** finals) {
 	printf("\nSelect Card: ");
 	char buff = getchar();
 	if (buff == '1' || buff == '2' || buff == '3') {
-		//printf("plebus");
 		int index = toInt(buff)-1;
 		printf("\e[1;1H\e[2J");
 		printf("%s\n", finals[index]);
@@ -123,20 +135,39 @@ int show_card(char ** finals) {
 		char buf[60];
 		size_t len = 0;
 		ssize_t read;
-		int i = -1;
-		file = fopen("../AI/gym_mod/gym_mod/engine/commanders_edition.txt", "r");
-		
+		file = fopen("../AI/gym_mod/gym_mod/engine/btech-all-list.txt", "r");
+
+		char label[100];
+		char seps[100];
 		while ((read = getline(&line, &len, file)) != -1) {
-			if (strcmp(slice_str(line, buf, 0, 9), "Card Title") == 0 && i == -1) {
-				char * name = slice_str(line, buf, 13, strlen(line));
-				if (strcmp(name, finals[index]) == 0) {
-					i = 0;
-					printf("%s\n", line);
+			if (strcmp(slice_str(line, buf, 0, 10), "_____ _____") == 0) {
+				char * name = slice_str(line, buf, 19, strlen(line));
+				char one;
+				char two = '\0';
+				int j;
+				for (j = 0; j < strlen(name); j++) {
+					if (j > 0) {
+						two = one;
+					}
+					one = name[j];
+					if (one == ')' || (two == ' ' && one == ' ')) {
+						break;
+					}
 				}
-			} else if (strcmp(slice_str(line, buf, 0, 9), "Card Title") == 0 && i != -1) {
-				break;
-			} else if (i != -1) {
-				printf("\n%s", line);
+				name = slice_str(name, buf, 0, j);
+				if (strcmp(name, finals[index]) == 0) {
+					printf("%s\n", label);
+					printf("%s\n", seps);
+					printf("%s\n", line);
+					break;
+				}
+			} else if (strcmp(slice_str(line, buf, 0, 19), "                   N") == 0) {
+				//printf("%s\n", line);
+				strncpy(label, line, sizeof(label)-1);
+				label[sizeof(label)-1] = '\0';
+			} else if (strcmp(slice_str(line, buf, 0, 19), "                   -") == 0) {
+				strncpy(seps, line, sizeof(seps)-1);
+				seps[sizeof(label)-1] = '\0';
 			}
 		}
 		fclose(file);

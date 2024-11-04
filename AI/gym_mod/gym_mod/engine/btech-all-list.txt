@@ -1,0 +1,692 @@
+==============================================================================
+
+Battletech (All-in-One Card List)                                     02/17/98
+
+==============================================================================
+
+List by Stephen D'Angelo (dangelo@crystalkeep.com)
+
+Abilities:
+  a#  = Alpha Strike: +# attack
+  c   = C3
+  e   = ECM
+  i   = antI-missile
+  j   = Jump (+1 initiative, -1 attack)
+  m#  = Missile #
+  n   = NARC
+  o## = Overheat #: +# attack
+  p   = Armor Piercing
+  x   = Other ability
+  A   = Artillery
+  M   = Mercenary
+  U   = Unique
+
+Houses:
+  I_ = Inner Sphere           C_ = Clan              P_ = Periphery
+  ID = Davion                 CB = Ghost Bear
+  II = St. Ives               CF = Jade Falcon
+  IK = Kurita                 CJ = Smoke Jaguar
+  IL = Liao                   CW = Wolf
+  IM = Marik
+  IR = Rasalhague
+  IS = Steiner
+  IW = Wolf's Dragoons
+
+
+Set Codes:
+  bt = Main Battletech game.  The set consists of 293 cards.
+       R = Rare, U = Uncommon, C = Common, V = Vital
+       (Vl = limited edition only, Vu = unlimited edition only)
+  cs = Counterstrike.  The set consists of 99 cards.
+       R = Rare/U1 (31 cards), U = Uncommon/U3 = 30 cards,
+       C = Common (18 mechs, 20 non-mechs)
+  mc = Mercenaries.  The set constists of 101 cards.
+       R = Rare/U1 (31 cards), U = Uncommon/U3 = 30 cards,
+       C = Common (19 mechs, 21 non-mechs)
+  mw = Mechwarrior.  The set constists of 108 cards.
+       R = Rare (36 cards), U = Uncommon = 36 cards, C = Common (36 cards)
+
+
+------------------------------------------------------------------------------
+'MECHS
+------------------------------------------------------------------------------
+ 
+                   Name                     Cost        S At/Ar/St Abil  House
+                   ------------------------ ----------- - -------- ----- -----
+_____ _____  mc-R  Albatross (ALB-3U)        6+2M       S  2/ 7/ 4 o22   IM
+_____ _____  cs-R  Annihilator (ANH-2A)      7+1L+3M    S  5/ 3/ 7 a4x   IW
+_____ _____  mc-U  Anvil (ANV-3M)            4+1A+1M+2T M  2/ 6/ 3 je    IM
+_____ _____  mc-C  Apollo (APL-1M)           2          S  1/ 8/ 0 m2    IM
+_____ _____  bt-U  Assassin (ASN-21)         0+1A+1M    F  1/ 0/ 4 j     I_
+_____ _____  cs-U  Assassin (ASN-23)         1          F  1/ 1/ 3 j     I_
+_____ _____  bt-C  Atlas (AS7-D)             7+1L       S  3/ 3/11 a2m1  I_
+_____ _____  bt-R  Atlas (AS7-K)             7+2A+2L+1M S  2/ 3/11 im1o44 IK
+_____ _____  mw-U  Avatar (AV1-OC)           5+1T       S  2/ 2/ 8 cm1o11 IK
+_____ _____  bt-C  Awesome (AWS-8Q)          6          S  4/ 3/10       I_
+_____ _____  bt-C  Awesome (AWS-9M)          7+1A       S  4/ 3/10 o22   IM
+_____ _____  bt-R  Axman (AXM-1N)            6          S  4/ 3/ 6 jxa2  ID/IS
+_____ _____  mc-R  Baboon (Howler)           0+1A       F  0/ 3/ 0 m1    CF
+_____ _____  bt-U  Banshee (BNC-3E)          4          S  2/ 3/ 9       I_
+_____ _____  bt-C  Banshee (BNC-5S)          8+2A       S  5/ 3/ 9 o43   ID/IS
+_____ _____  mc-R  Behemoth (Stone Rhino)   11+3A+4L+4M S  3/11/ 8 jxo11 CJ
+_____ _____  mc-R  Berserker (BRZ-A3)        7+3L+3T    S  4/11/ 3 eio11 ID/IS
+_____ _____  bt-C  Black Hawk A (Nova)       7+1A+1M+1T M  5/ 1/ 7 ijo22 C_
+_____ _____  bt-C  Black Hawk B (Nova)       5          M  4/ 1/ 7 jx    C_
+_____ _____  cs-U  Black Hawk C (Nova)       3+1A+1M+1T M  3/ 1/ 7 x     C_
+_____ _____  bt-C  Black Hawk D (Nova)       2+3A       M  0/ 1/ 7 jm2   C_
+_____ _____  bt-C  Black Hawk Prime (Nova)  13+1L+2M    M  7/ 1/ 7 jo46  C_
+_____ _____  cs-C  Blackjack (BJ-1)          2+1A       S  2/ 1/ 6 o11   ID
+_____ _____  bt-C  Blackjack (BJ2)           3+2A       S  3/ 1/ 6 jo11  ID
+_____ _____  mw-C  Blackjack (BJ2-OB)        4          S  2/ 1/ 7 jcx   I_
+_____ _____  bt-U  Black Knight (BL6-KNT)    5+2A       S  3/ 2/ 8 o33   I_
+_____ _____  mw-R  Black Lanner Prime        7+3A+3M+3T F  4/ 1/ 7 eo22  C_
+_____ _____  cs-R  Bombardier (BMB-12D)      3+2A+3L    M  0/ 2/ 8 im2   I_
+_____ _____  bt-C  Caesar (CES-3R)           4+2A+1M    S  5/ 2/ 6       ID/IS
+_____ _____  bt-U  Cataphract (CTF-3D)       5          S  4/ 2/ 6 ja1   IL
+_____ _____  cs-U  Catapult (CPLT-C1)        4          S  1/ 2/ 6 jm2o11 IL
+_____ _____  bt-C  Catapult (CPLT-C3)        5          S  3/ 2/ 6 jxo22 IL
+_____ _____  mw-R  Cauldron-Born A          10+3M       M  4/ 2/ 7 xa2o66 CJ
+_____ _____  bt-C  Centurion (CN9-A)         2          S  2/ 1/ 6 a1    I_
+_____ _____  bt-U  Centurion (CN9-D)         2+2A       M  2/ 1/ 6 a2    I_
+_____ _____  mw-U  Cerberus (MR-V2)          9+3L       S  8/ 3/ 7 ix    I_
+_____ _____  cs-U  Champion (CHP-1N)         4+2M       M  3/ 2/ 5 a2    I_
+_____ _____  bt-U  Charger (CGR-1A1)         1+1A+1P    M  1/ 1/ 7       IK
+_____ _____  cs-R  Charger (CGR-3K)          4+1A+2P    M  2/ 3/ 6 jm1   IK
+_____ _____  bt-C  Cicada (CDA-2A)           0+1A       F  1/ 0/ 3       I_
+_____ _____  bt-C  Cicada (CDA-3M)           1+1A       F  2/ 0/ 3       IM
+_____ _____  bt-U  Clint (CLNT-2-3T)         1+1A       M  2/ 1/ 3 j     I_
+_____ _____  bt-U  Clint (CLNT-2-3U)         1+3A       M  2/ 1/ 3 jo21  IL
+_____ _____  bt-C  Commando (COM-2D)         0+1A+1M    M  2/ 1/ 2       IS
+_____ _____  cs-C  Commando (COM-5S)         0+1M       M  2/ 1/ 2       IS
+_____ _____  mc-C  Corvis                    4+2A+1M    S  1/ 6/ 5 j     C_
+_____ _____  cs-C  Crab (CRB-27)             4          M  2/ 1/ 7 o22   IK
+_____ _____  bt-U  Crockett (CRK-5003-1)     7+2A       S  5/ 3/ 9 jo11  I_
+_____ _____  cs-U  Cyclops (CP 10-Z)         3+2L       S  2/ 2/ 6 o43   I_
+_____ _____  bt-C  Cyclops (CP 11-A)         4+1A       S  4/ 1/ 7 a1    I_
+_____ _____  mw-U  Daikyu (DAI-01)           6+2M       M  4/ 2/ 8 xa1   IK
+_____ _____  mw-C  Daimyo (DMO-1K)           4+1M       M  4/ 1/ 6 x     IK
+_____ _____  bt-R  Daishi A (Dire Wolf)     17+5A+5L+5M S 12/ 4/11 i     CJ
+_____ _____  cs-R  Daishi B (Dire Wolf)     12+3A+3L    S  7/ 4/11 o64   CJ
+_____ _____  cs-R  Daishi Prime (Dire Wolf) 19+3A+3L+3M S 11/ 4/11 a2o66 C_
+_____ _____  mc-U  Dart (DRT-3S)             0             0/ 3/ 0 x     ID/IS
+_____ _____  cs-R  Dasher A (Firemoth)       0+1T       F  1/ 0/ 2 ix    CB
+_____ _____  cs-R  Dasher B (Firemoth)       4+2T       F  3/ 0/ 2 epx   CB
+_____ _____  bt-U  Dasher C (Firemoth)       0+1A       F  0/ 0/ 2 axm1  CB
+_____ _____  bt-C  Dasher D (Fire Moth)      4+2A+1M+1T F  3/ 0/ 2 xo13  CB
+_____ _____  bt-C  Dasher Prime (Fire Moth)  2+2A       F  3/ 0/ 2 x     C_
+_____ _____  bt-C  Dervish (DV-6M)           3          M  1/ 1/ 5 jm1o21 I_
+_____ _____  bt-C  Dervish (DV-7D)           3+1A       M  2/ 1/ 6 jm1   ID
+_____ _____  bt-C  Dragon (DRG-1N)           2+1A       M  2/ 1/ 7       IK
+_____ _____  bt-R  Dragonfly A (Viper)       6+3A+1M    F  4/ 1/ 5 jo22  CB
+_____ _____  bt-U  Dragonfly B (Viper)       4+1A       F  3/ 1/ 5 jo21  CB
+_____ _____  bt-U  Dragonfly C (Viper)       4+2A       F  3/ 1/ 5 jp    CB
+_____ _____  bt-U  Dragonfly D (Viper)       5+1A       F  4/ 1/ 5 j     CB
+_____ _____  bt-U  Dragonfly Prime (Viper)   3+2A+1M+2T F  3/ 1/ 5 ij    C_
+_____ _____  bt-C  Enforcer (ENF-4R)         2+1A       S  2/ 1/ 6 ja1   ID
+_____ _____  bt-C  Enforcer (ENF-5D)         2+1A+1M    M  2/ 1/ 7 ja1   ID
+_____ _____  bt-U  Exterminator (EXT-4D)     3+1A+1M    M  3/ 1/ 7 ij    I_
+_____ _____  bt-U  Falcon (FLC-4P)           0+1A+1M    M  1/ 1/ 3 ij    IW
+_____ _____  mw-R  Falconer (FLC-8R)         7+3M+3T    M  4/ 2/ 8 jxo22 ID
+_____ _____  mw-C  Falcon Hawk (FNKH-9K1A)   2+2M       M  3/ 0/ 6       I_
+_____ _____  bt-U  Fenris A (Ice Ferret)     3          F  2/ 1/ 6 i     CW
+_____ _____  cs-C  Fenris B (Ice Ferret)     5+1A       F  4/ 1/ 6       CW
+_____ _____  bt-C  Fenris C (Ice Ferret)     2+3A       F  1/ 1/ 6 m1    CW
+_____ _____  bt-C  Fenris D (Ice Ferret)     6+2A+1M+1T F  5/ 1/ 6 i     CW
+_____ _____  bt-C  Fenris Prime (Ice Ferret) 3+1A+1M+1T F  3/ 1/ 6       C_
+_____ _____  mw-C  Fireball (ALM-7D)         0+1A+1M    F  1/ 0/ 3 x     ID/IS
+_____ _____  cs-U  Firefly (FFL-4B)          1+2A       M  2/ 0/ 5 j     IW
+_____ _____  bt-C  Firestarter (FS9-H)       0+2A+1T    M  1/ 1/ 3 jo11  I_
+_____ _____  mw-U  Firestarter (FS9-OD)      4+2A+1T    M  2/ 1/ 6 jecx  I_
+_____ _____  bt-R  Firestarter (FS9-S)       1+1A       M  1/ 1/ 3 ijo11 I_
+_____ _____  bt-R  Flashman (FLS-8K)         8          M  4/ 2/ 8 io33  I_
+_____ _____  bt-U  Flea (FLE-17)             1+2L       M  1/ 0/ 2 jo11  IW
+_____ _____  mw-C  Galahad (Glass Spider)    4+1A+2M+1T S  4/ 2/ 8 x     C_
+_____ _____  mw-R  Gallowglas (GAL-1GLS)     5+2M+2T    S  4/ 2/ 8 jxo11 I_
+_____ _____  bt-U  Gladiator A (Executioner) 12+2L+2M   S  8/ 3/10 jo43  CB
+_____ _____  bt-R  Gladiator B (Executioner) 8+1A+3M+1T S  6/ 3/10 ija1  CB
+_____ _____  bt-U  Gladiator C (Executioner) 8+1A+1M    S  6/ 3/10 ja1m1 CB
+_____ _____  cs-U  Gladiator D (Executioner) 11         S  9/ 3/10 j     CB
+_____ _____  bt-C  Gladiator Prime(Executioner) 9       S  6/ 3/10 jx    C_
+_____ _____  bt-C  Grand Dragon (DRG-5K)     4          M  3/ 2/ 6 o21   IK
+_____ _____  mc-C  Grand Titan (T-IT-N10M)   6+2A+2L+2M S  3/11/ 2 im1o53 I_
+_____ _____  bt-C  Grasshopper (GHR-5H)      4          S  3/ 2/ 8 j     I_
+_____ _____  cs-C  Grasshopper (GHR-5J)      4          S  3/ 2/ 8 j     I_
+_____ _____  mw-C  Grendel Prime             7+1A+2M+2T F  5/ 1/ 6 jo22  C_
+_____ _____  mc-C  Grim Reaper (GRM-R-PR29)  4+3A+3M    M  1/ 8/ 2 im1o11 I_
+_____ _____  cs-C  Guillotine (GLT-3M)       4+2A       S  4/ 2/ 7 j     IM
+_____ _____  bt-R  Guillotine (GLT-5M)       4+2A       S  4/ 2/ 7 j     IM
+_____ _____  mc-U  Gunslinger (GUN-1ERD)    10          S  3/ 9/ 7 jex ID/IK/IS
+_____ _____  mc-C  Hammer (HMR-3M)           1          M  0/ 5/ 2       IM
+_____ _____  bt-U  Hatamoto-Chi (HTM-27T)    4          S  3/ 3/ 8 o21   IK
+_____ _____  bt-C  Hatchetman (HCT-3F)       2+1A       S  3/ 1/ 4 jx    ID/IS
+_____ _____  bt-U  Hatchetman (HCT-5S)       2+3A       S  2/ 1/ 6 jxo11 ID/IS
+_____ _____  mc-U  Hellhound (Conjurer)      5+3A+1M    M  1/ 7/ 4 jo11  CF
+_____ _____  mc-U  Hercules (HRC-LS-9000)    5+1A+1M+1T M  2/ 8/ 4 ix    IM
+_____ _____  cs-C  Hermes (HER-1S)           1+1A       F  1/ 0/ 4 x     I_
+_____ _____  cs-C  Hermes (HER-3S)           0+1A       F  1/ 0/ 2 x     IM
+_____ _____  mc-C  Hermes II (HER-5S)        1+1A+1M    M  1/ 5/ 2       I_
+_____ _____  bt-R  Highlander (HGN-732)      6+1A       S  2/ 3/10 jm1o32 I_
+_____ _____  mw-R  Hitman (HM-1)             2+2A+1T    F  2/ 0/ 4 e     IK
+_____ _____  bt-R  Hoplite (HOP-4D)          1+1A+1M    S  1/ 1/ 8 a1    IW
+_____ _____  bt-U  Hornet (HNT-171)          1+1L       M  1/ 0/ 3 jx    ID/IW
+_____ _____  bt-C  Hunchback (HBK-4G)        2+1A+1M    S  2/ 1/ 7 a2    I_
+_____ _____  cs-C  Hunchback (HBK-5M)        2          S  2/ 1/ 7 a1    I_
+_____ _____  mw-C  Hunchback IIC             6+1M       S  5/ 1/ 4 ja5   C_
+_____ _____  mc-C  Huron Warrior (HUR-W0-R4L)4+2M       M  1/ 7/ 3 o11   IL
+_____ _____  bt-U  Hussar (HSR 200-D)        0+2L       F  1/ 0/ 1 x     I_
+_____ _____  bt-U  Imp (IMP-3E)              7+1L       S  3/ 3/11 a1o43 IW
+_____ _____  mc-C  Jackal (JA-KL-1532)       0+2A+1M    M  0/ 5/ 1 io11  IL/IM
+_____ _____  bt-C  JagerMech (JM6-DD)        2+3A       S  3/ 1/ 5 a1    ID/IK
+_____ _____  bt-C  JagerMech (JM6-S)         1+1A       S  2/ 1/ 4 a1    ID/IL
+_____ _____  bt-C  Javelin (JVN-10N)         1          M  2/ 0/ 3 j     I_
+_____ _____  bt-C  Jenner (JR7-D)            2+1A+1M    F  2/ 1/ 2 jo22  IK
+_____ _____  cs-U  Jenner (JR7-K)            2+1A+1M    F  2/ 1/ 2 o11   IK
+_____ _____  mw-C  Jenner IIC                3+2M       F  3/ 0/ 3 jx    C_
+_____ _____  bt-C  Katana (CRK-5003-2)       5+2A+1M    S  4/ 2/ 7 jo32  IK
+_____ _____  cs-R  King Crab (KGC-000)       7+4L+4M    S  3/ 3/11 a4    I_
+_____ _____  cs-U  Kintaro (KTO-19)          5+1T       M  2/ 1/ 8 no21  I_
+_____ _____  cs-C  Kintaro (KTO-20)          4+3A+2M    M  3/ 1/ 8 o11   I_
+_____ _____  mw-R  Komodo (KIM-2)            6+3A+3M+3T M  6/ 1/ 5 jie   IK
+_____ _____  bt-R  Koshi A (Mist Lynx)       0          F  0/ 0/ 3 ijp   C_
+_____ _____  bt-C  Koshi B (Mist Lynx)       4          F  4/ 0/ 4 j     C_
+_____ _____  bt-R  Koshi C (Mist Lynx)       3+1A+1M+1T F  3/ 0/ 3 eij   CJ
+_____ _____  bt-U  Koshi D (Mist Lynx)       1+2A       F  2/ 0/ 3 j     C_
+_____ _____  bt-C  Koshi Prime (Mist Lynx)   1+2A       F  2/ 0/ 3 j     C_
+_____ _____  mc-U  Kraken (Bane)             8+3A+3L    S  4/11/ 5 x     CF
+_____ _____  bt-R  Lancelot (LNC25-01)       4+3A       M  4/ 2/ 5 o41   I_
+_____ _____  mw-U  Linebacker A              7+1A+1M+1T M  4/ 2/ 8 m1o32 CW
+_____ _____  mc-C  Linebacker B              7+2A+2M+1T M  2/ 8/ 6 x     CW
+_____ _____  mc-C  Linebacker Prime          7+2A+1M+2T M  2/ 8/ 5 xo11  C_
+_____ _____  bt-U  Loki A (Hellbringer)      8+3A+3T    M  5/ 1/ 5 nm1o32 CF
+_____ _____  bt-U  Loki B (Hellbringer)      5+1A+2M    M  6/ 1/ 5       CF
+_____ _____  bt-U  Loki Prime (Hellbringer) 12+1A+2L+2M+3T M  6/ 1/ 5 eipo56 C_
+_____ _____  bt-U  Mad Cat A (Timber Wolf)  14          M  9/ 2/ 9 o11   CW
+_____ _____  bt-U  Mad Cat B (Timber Wolf)   9+1A+1M    M  7/ 2/ 9       CW
+_____ _____  bt-R  Mad Cat C (Timber Wolf)  11+4A+1M+1T M  5/ 2/ 9 im1o23 CW
+_____ _____  bt-U  Mad Cat D (Timber Wolf)  13+4A+4M    M  7/ 2/ 9 o44   CW
+_____ _____  bt-C  Mad Cat Prime (Timber Wolf) 15+2L    M  7/ 2/ 9 m2o33 C_
+_____ _____  mc-R  Mandrill                  2+3A+3M    S  0/ 5/ 1 jm3   C_
+_____ _____  bt-R  Man O' War A (Gargoyle)  12+3M       M  6/ 3/ 7 o45   CW
+_____ _____  bt-R  Man O' War B (Gargoyle)   5+2A       M  4/ 3/ 7       CW
+_____ _____  bt-R  Man O' War C (Gargoyle)  14+4M       M  9/ 3/ 7 a3    CW
+_____ _____  bt-C  Man O' War Prime (Gargoyle)  5+2A    M  4/ 3/ 7       C_
+_____ _____  bt-C  Masakari A (Warhawk)     10+1A+1M    S  8/ 3/10       C_
+_____ _____  bt-U  Masakari B (Warhawk)     11+3A+3L    S  8/ 3/10 n     C_
+_____ _____  bt-R  Masakari C (Warhawk)     13+2L+3M    S 10/ 3/10 o11   C_
+_____ _____  bt-R  Masakari Prime (Warhawk) 13+3A+3L+5M S 10/ 3/ 9 o43   C_
+_____ _____  bt-R  Mauler (MAL-1R)           4+1A+1M    S  3/ 2/ 7 m1o21 IK
+_____ _____  bt-U  Mercury (MCY-97)          0+1A       F  1/ 0/ 3       I_
+_____ _____  bt-U  Mongoose (MON-66)         1+3A       F  2/ 1/ 3       I_
+_____ _____  mw-U  Naga A                    9          M  6/ 2/ 5 xAo22 CW
+_____ _____  mw-U  Naga D                    8+3A+3L    M  7/ 2/ 5 xA    CW
+_____ _____  mc-U  Naga Prime                8+1A+1T    M  2/ 5/ 6 xo11  C_
+_____ _____  mw-U  Naginata (NG-C3A)         7+1A+1T    S  0/ 3/ 9 cm4   IK
+_____ _____  mw-R  Night Gyr A              12+4A+4L+4M S 10/ 2/ 9 ja3   CF/CJ
+_____ _____  mw-C  Night Gyr B               6+3A+2M    S  5/ 2/ 9 jx    CF/CJ
+_____ _____  mc-U  Nightsky (NGS-4S)         2          M  1/ 7/ 2 jxo31 ID/IS
+_____ _____  mw-U  Nobori-Nin A              6+4A+4T    M  6/ 1/ 7 j     C_
+_____ _____  bt-U  Orion (ON1-K)             4+1A       S  2/ 2/ 9 a2    IM
+_____ _____  bt-R  Orion (ON1-M)             6+2A+1T    S  3/ 2/ 9 nm1   IM
+_____ _____  mw-C  Owens (OW-1)              2+2A+1T    F  1/ 0/ 6 jc    I_
+_____ _____  mw-R  Owens (OW-1D)             3+2A+2T    F  1/ 0/ 6 jcn   IK
+_____ _____  bt-C  Panther (PNT-9R)          1+1A       S  2/ 1/ 4 j     IK
+_____ _____  cs-C  Panther (PNT-10K)         1+2M       S  1/ 1/ 4 jm1o11 IK
+_____ _____  mc-U  Penetrator (PTR-4D)       4+3A+2M    S  2/ 8/ 3 ijo42 ID/IS
+_____ _____  mw-C  Peregrine (Horned Owl)    4+1M       M  5/ 0/ 5 j     C_
+_____ _____  mw-U  Phantom A                 5+2A+3M+3T F  4/ 1/ 5 x     CW
+_____ _____  mw-U  Phantom B                 4+1A+1M+1T F  3/ 1/ 5 x     CW
+_____ _____  mc-U  Phantom C                 8+1L+2M    F  1/ 5/ 6 x     CW
+_____ _____  mc-U  Phantom D                 6          F  1/ 5/ 4 x     CW
+_____ _____  mc-C  Phantom Prime             4+1A+1M+1T F  1/ 5/ 2 ex    C_
+_____ _____  mw-R  Piranha                   2+2A+2M    F  2/ 0/ 3 xpa1  C_
+_____ _____  mw-U  Pouncer A                 6+3A+2M    M  3/ 1/ 5 jm2o22 CW
+_____ _____  mw-C  Pouncer B                 5+1A+2M    M  4/ 1/ 5 jxo22 CW
+_____ _____  mc-C  Pouncer C                 4+4A+4M    M  1/ 5/ 5 j     CW
+_____ _____  mc-C  Pouncer Prime             6+1A+1M+2T M  1/ 5/ 5 jxo22 C_
+_____ _____  mw-R  Prometheus (Dire Wolf)   20          S 10/ 4/11 xUa2o46 IS
+_____ _____  bt-C  Puma A (Adder)            3+1A+1M    M  1/ 1/ 5 m3    C_
+_____ _____  cs-C  Puma B (Adder)            4+2A+3M    M  4/ 1/ 5 a2    C_
+_____ _____  bt-U  Puma C (Adder)            4+2A+2T    M  2/ 1/ 5 nm2   C_
+_____ _____  cs-U  Puma D (Adder)            3+2A+2M    M  3/ 1/ 5 a2    C_
+_____ _____  bt-C  Puma Prime (Adder)        5+2A+1M    M  4/ 1/ 5 xo22  C_
+_____ _____  bt-C  Quickdraw (QKD-4G)        2+1A+1M    M  2/ 2/ 4 jo42  I_
+_____ _____  bt-C  Quickdraw (QKD-5M)        2+2A       M  2/ 2/ 5 j     I_
+_____ _____  mw-U  Rakshasa (MDG-1A)         7+3M       M  2/ 2/ 9 m2o32 I_
+_____ _____  bt-U  Raven (RVN-3L)            2+3T       M  2/ 0/ 3 en    IL
+_____ _____  mc-R  Rhonda's Highlander(HGN-732) 7+1A+2M S  3/10/ 3 jxUMm1o12 I_
+_____ _____  bt-U  Ryoken A (Stormcrow)     11+3A+1M    M  7/ 2/ 7 m1o22 CJ
+_____ _____  cs-R  Ryoken B (Stormcrow)      9+1A+2L+3M M  6/ 2/ 7 a2o22 CJ
+_____ _____  cs-C  Ryoken C (Stormcrow)      7+1A       M  6/ 2/ 7       CB
+_____ _____  bt-U  Ryoken D (Stormcrow)      6+3A       M  1/ 2/ 7 nm3   CJ
+_____ _____  bt-C  Ryoken Prime (Stormcrow)  7+1A       M  6/ 2/ 7       C_
+_____ _____  mc-R  Salamander (PPR-5S)       6+4A       S  3/ 9/ 0 m4    ID/IS
+_____ _____  mc-R  Scarabus (SCB-9A)         3+1M+1T    F  0/ 5/ 1 ex    ID/IS
+_____ _____  cs-C  Sentinel (STL-3L)         0          M  1/ 1/ 3       IK
+_____ _____  bt-U  Sentinel (STN-3M)         0+2A+1M    M  2/ 1/ 3       IK
+_____ _____  bt-R  Shogun (SHG-2F)           5+2A+2T    S  3/ 3/ 8 jm1o31 IW
+_____ _____  mc-C  Snake (SNK-1V)            2+2A+2M    M  1/ 5/ 3 j     IL
+_____ _____  bt-U  Spider (SDR-5V)           1+1A+1L    F  1/ 0/ 3 jx    I_
+_____ _____  cs-C  Spider (SDR-7M)           1+1L+1M    F  1/ 0/ 3 jx    I_
+_____ _____  bt-C  Stalker (STK-3F)          6+1A+1M    S  2/ 3/ 7 m1o34 I_
+_____ _____  bt-U  Stalker (STK-5M)          9+2A+2M+1T S  4/ 3/ 8 nm1o11 IM
+_____ _____  mc-C  Stealth (STH-1D)          3+2A+2M    F  1/ 7/ 2 j     ID/IS
+_____ _____  mw-C  Sunder (SD1-OB)           6+3A+3M+3T S  3/ 3/10 cm1   IK
+_____ _____  mw-C  Supernova                10+4A+4M+4T S  7/ 3/ 9 jxo53 C_
+_____ _____  mc-C  Tempest (TMP-3M)          6          S  2/ 8/ 5 ja1   IM
+_____ _____  bt-C  Thor A (Summoner)         6+3A       M  5/ 2/ 6 jo41  C_
+_____ _____  bt-R  Thor B (Summoner)        12+1L+1T    M  3/ 2/ 6 ijnm2 CF
+_____ _____  bt-C  Thor C (Summoner)         8+1A+1M    M  6/ 2/ 6 ja2   CF
+_____ _____  bt-U  Thor D (Summoner)         6+1A+2M+1T M  6/ 2/ 6 ijx   CF
+_____ _____  bt-C  Thor Prime (Summoner)     6          M  5/ 2/ 6 j     C_
+_____ _____  cs-C  Thorn (THE-N)             0+1A+2L    M  1/ 0/ 4 x     I_
+_____ _____  bt-U  Thug (THG-11E)            6+1A       S  4/ 3/ 8 a1    I_
+_____ _____  mc-C  Thunder (THR-1L)          5+1A+1L+1M M  2/ 9/ 3 a2    IL
+_____ _____  bt-C  Trebuchet (TBT-5N)        1+1A+1M    M  0/ 1/ 5 m1022 I_
+_____ _____  bt-U  Trebuchet (TBT-7M)        4+1A+2T    M  2/ 1/ 5 jnm1  IM
+_____ _____  mw-U  Turkina A                11+5A+5M    S  5/ 3/11 jxm3  CF
+_____ _____  mw-R  Turkina C                12          S  8/ 3/11 jpxa2 CF
+_____ _____  cs-C  Uller A (Kit Fox)         2+1A+1M    M  4/ 0/ 4       CF
+_____ _____  bt-C  Uller B (Kit Fox)         2+1A+1M    M  3/ 0/ 4 a2    C_
+_____ _____  bt-R  Uller C (Kit Fox)         1+2A+1M+1T M  2/ 1/ 3 eip   CF
+_____ _____  bt-U  Uller D (Kit Fox)         2+1A       M  0/ 1/ 3 m3    CF
+_____ _____  bt-C  Uller Prime (Kit Fox)     2+1A+1M    M  4/ 0/ 4       C_
+_____ _____  bt-C  UrbanMech (UM-R60)        0+2A+1M    S  2/ 1/ 4 jx    IL
+_____ _____  cs-C  UrbanMech (UM-R63)        0+1A       S  2/ 1/ 4 jx    IL
+_____ _____  mc-C  UrbanMech IIC             1+2A+2M    S  1/ 4/ 3 ja1   C_
+_____ _____  mc-U  Venom (SDR-9K)            1+1A+1M    F  0/ 3/ 1 jxo11 IK
+_____ _____  bt-C  Victor (VTR-9B)           4+3A       S  3/ 2/ 7 ja2   I_
+_____ _____  bt-C  Victor (VTR-9K)           4+3A       S  4/ 2/ 7 j     ID/IK
+_____ _____  bt-C  Vindicator (VND-1R)       1+1A+1M    S  2/ 1/ 6 j     IL
+_____ _____  cs-U  Vindicator (VND-3L)       1+2A       S  2/ 1/ 6 j     IL
+_____ _____  bt-C  Vulcan (VT-5M)            0+2A+2M    M  2/ 0/ 4 j     IM
+_____ _____  cs-U  Vulcan (VT-5S)            0+2A       M  1/ 0/ 4 ja1   IS
+_____ _____  bt-C  Vulture A (Mad Dog)      12+1A+2L+3M M  6/ 1/ 7 o33   C_
+_____ _____  bt-R  Vulture B (Mad Dog)      13+1A+1M    M  7/ 1/ 7 m1o55 C_
+_____ _____  bt-C  Vulture C (Mad Dog)       4+1A+1T    M  4/ 1/ 7 x     C_
+_____ _____  bt-C  Vulture Prime (Mad Dog)   9          M  4/ 1/ 7 m3o32 C_
+_____ _____  mw-C  Watchman (WTC-4M)         2+1A       M  2/ 1/ 6 j     ID
+_____ _____  bt-C  Whitworth (WTH-1)         1+1A+1T    S  1/ 1/ 5 jo22  ID/IK
+_____ _____  bt-C  Whitworth (WTH-2)         1+2A       S  1/ 1/ 5 jm1   ID/IK
+_____ _____  mc-R  Widowmaker (Daishi Dire Wolf) 20+4A+4L+4M S  4/11/12 xUo57 CW
+_____ _____  bt-C  Wolfhound (WLF-2)         3          M  3/ 1/ 5 o21   ID/IS
+_____ _____  bt-C  Wolf Trap (WFT-1)         2+3A       M  2/ 1/ 5 a2    IK
+_____ _____  mw-C  Wraith (TR1)              4+3A+2T    F  3/ 1/ 7 j     IL/IM
+_____ _____  bt-R  Wyvern (WVE-5N)           2+1A+1M    S  2/ 1/ 7 jo11  I_
+_____ _____  mc-C  Wyvern IIC                5+4A+3M    S  1/ 7/ 4 jo33  C_
+_____ _____  mc-R  Yen-Lo-Wang (CN9-YLW)     5+2A+3M    M  1/ 6/ 3 xUa2  ID/II
+_____ _____  bt-C  Zeus (ZEU-6S)             4          S  3/ 2/ 7 o11   IS
+_____ _____  bt-C  Zeus (ZEU-9S)             4+3A       S  3/ 2/ 7 o22   ID/IS
+
+
+------------------------------------------------------------------------------
+COMMAND
+------------------------------------------------------------------------------
+ 
+                   Name                          Type      Cost    A/S U House
+                   ----------------------------- --------- ------- --- - -----
+_____ _____  cs-R  Accelerate Conflict           Operation 4+3L+3T 0/5 - __
+_____ _____  cs-U  Accelerated Turnaround        -         2+2L     -  - __
+_____ _____  mc-C  Access to Extra Munitions     Enhancmnt 2+3L     -  - __
+_____ _____  cs-R  Adam Steiner                  -         3+5P+4T 2/3 U IS
+_____ _____  bt-C  Aerospace Fighter Mission     -         6+5P     -  - __
+_____ _____  mw-U  Airstrikes Close to Home      -         2+6P     -  - IR
+_____ _____  bt-R  Alex Mallory                  -         3+3P+3T 3/1 U ID
+_____ _____  bt-C  Ambush!                       Subtrfuge 4+4T     -  - __
+_____ _____  mc-U  Ammo Truck                    -         0+2L    0/3 - __
+_____ _____  mc-R  Anastasius Focht              -         4+5P    5/2 U I_
+_____ _____  bt-R  Arms Reduction                -         3+8P     -  - __
+_____ _____  bt-U  Arrow IV Battery              Artillery 1+1L+1M 0/3 - __
+_____ _____  mc-C  Artillery Bombardment         -         3+2L+4M 0/5 - I_
+_____ _____  cs-U  Assassination                 Subtrfuge 3+4P     -  - I_
+_____ _____  mc-C  Assault on the Rear Echelon   -         2+4T     -  - __
+_____ _____  bt-U  Battalion Support             -         3+4L    2/1 - __
+_____ _____  cs-R  Blockade                      Operation 0+4P    3/9 - __
+_____ _____  cs-U  Bribed Pilot                  Subtrfuge 6+8P     -  - __
+_____ _____  mw-C  C3 Retrofit                   Enhancmnt 1+2T     -  - I_
+_____ _____  bt-R  Candace Liao                  -         4+2P    4/2 U II
+_____ _____  bt-C  Caught in Hangar              -         2+4T     -  - __
+_____ _____  cs-R  Chandrasekhar Kurita          -         0+4P    2/4 U IK
+_____ _____  bt-U  Chaparral Missile Tank        Artillery 1+2L+2M 0/3 - I_
+_____ _____  mw-C  Civilian Settlement           Terrain   3+2P     -  - I_
+_____ _____  bt-U  Combat Engineers              Enhancmnt 3+3L+2M  -  - __
+_____ _____  bt-U  Communications Blackout       -         0        -  - __
+_____ _____  mc-U  ComStar Technicians           -         1+4P    5/1 - I_
+_____ _____  mc-R  Contract with 21st Centauri Lancers  Mercenary 2+6P    1/5 U I_
+_____ _____  mc-R  Contract with Black Thorns    Mercenary 2+6P    2/4 U I_
+_____ _____  mc-R  Contract with Eridani Light Horse  Merc 1+6P    2/4 U I_
+_____ _____  bt-R  Contract with Gray Death Legion  -      1+6P    2/4 U I_
+_____ _____  mw-R  Contract with Hansen's Roughriders   Mercenary 5+6P    2/4 U I_
+_____ _____  cs-R  Contract with Kell Hounds     Mercenary 3+6P    2/4 U I_
+_____ _____  mc-U  Contract with Northwind Highlanders  Mercenary 1+6P    2/4 - I_
+_____ _____  mc-R  Contract with Snord's Irregulars Merc   3+6P    2/4 U I_
+_____ _____  bt-R  Contract with Wolf's Dragoons -         5+6P    2/4 U I_
+_____ _____  mw-U  Corridor of Fire              -         4+3M+5P  -  - I_
+_____ _____  mw-U  Creative Terraforming         -         1+4P     -  - __
+_____ _____  mw-U  Crusader Faction              Faction   3+4P    3/6 - C_
+_____ _____  bt-R  Culling                       -         3+3P     -  - CJ
+_____ _____  bt-R  Death Commando Strike         Subtrfuge 5+6P     -  - IL
+_____ _____  mw-C  Deep Lake                     Terrain   3        -  - __
+_____ _____  mw-U  Defection                     Subtrfuge 0+5P     -  - __
+_____ _____  mc-C  Difficult Terrain             Enhancmnt 2+3T     -  - __
+_____ _____  mc-C  Disguised Coordinates         Subtrfuge 3+6P     -  - __
+_____ _____  cs-U  Double-Time Offense           -         4+4L     -  - __
+_____ _____  mc-R  Dr. Ariel Reed                -         0+3P    2/3 U I_
+_____ _____  bt-U  Dropship Site                 -         0+2L+6P  -  - __
+_____ _____  mw-C  ECM Retrofit                  Enhancmnt 1+2T     -  - __
+_____ _____  bt-U  Effective Groundwork          -         5+5L     -  - __
+_____ _____  bt-U  Elemental Point               -         0+2A    1/1 - C_
+_____ _____  bt-R  Elias Crichell                -         3+6P    3/2 U CF
+_____ _____  bt-R  Elite Infantry                Enhancmnt 0+4L+1M  -  - I_
+_____ _____  bt-R  Evantha Fetladral             -         0+2T    3/1 U CW
+_____ _____  mc-U  Expert Negotiating Team       -         1+7P    4/2 - I_
+_____ _____  bt-C  Extra Armor Plating           Enhancmnt 0+2A     -  - __
+_____ _____  bt-C  Ferro-Fibrous Armor           Enhancmnt 0+2A     -  - __
+_____ _____  mw-R  Financial Collapse            -         1+5P     -  - __
+_____ _____  mc-U  First Circuit Summons         -         2+2L+6P 4/4 - I_
+_____ _____  mw-C  Fog-Shrouded Moors            Terrain   2        -  - __
+_____ _____  bt-R  Grayson Death Carlyle         -         4+8P    2/7 U I_
+_____ _____  bt-R  Guerrilla Support             Operation 3+6T    4/9 - I_
+_____ _____  cs-R  Haakon Magnussen              -         2+3P    4/2 U IR
+_____ _____  bt-R  Hanse Davion "The Fox"        -         6+6P    5/1 U ID
+_____ _____  mw-C  Heavy Woods                   Terrain   3        -  - __
+_____ _____  bt-C  Helicopter Support            -         1+4T     -  - I_
+_____ _____  mw-R  Hidden Location               Enhancmnt 1+2T     -  - __
+_____ _____  mc-C  Hidden Reserves               -         1+3L     -  - __
+_____ _____  mc-U  High-Profile Target           -         0+1T     -  - __
+_____ _____  bt-C  Holographic Decoy             Subtrfuge 0+2A+6P  -  - __
+_____ _____  bt-C  Hovertank Detachment          -         2+4T     -  - I_
+_____ _____  mc-R  Hyperpulse Generator          -         0+4P    4/1 - I_
+_____ _____  bt-U  Infantry Platoon              Enhancmnt 0+3L     -  - __
+_____ _____  mw-U  Inferno Missile Retrofit      Enhancmnt 1+3M     -  - __
+_____ _____  bt-C  Inside Job                    Subtrfuge 0+6P     -  - __
+_____ _____  mc-U  Intimidating Paint Job        Enhancmnt 1+4L     -  - __
+_____ _____  bt-R  ISF Counterespionage          -         0        -  - IK
+_____ _____  mw-C  Jump Jet Retrofit             Enhancmnt 0+1T     -  - __
+_____ _____  bt-R  Justin Xiang Allard           -         3+9P    1/4 U ID
+_____ _____  mw-R  Katherine Steiner-Davion      -         3+5P    4/3 U IS
+_____ _____  mw-R  Khan Natasha Kerensky         -         3+4P    3/3 U CW
+_____ _____  bt-R  Leo Showers                   -         3+5P    4/1 U C_
+_____ _____  bt-C  Long-Range Targeting System   Enhancmnt 0+4A     -  - __
+_____ _____  bt-U  Long Tom Battery              Artillery 4+4L+4M 0/3 - __
+_____ _____  mw-U  Loremaster                    -         0+5P    2/5 - C_
+_____ _____  bt-R  Manipulation of Romano        Subtrfuge 3+6P     -  - IL
+_____ _____  bt-R  Marissa Morgan                -         1+3T    3/1 U IM
+_____ _____  bt-U  MASC                          Enhancmnt 0+3A     -  - __
+_____ _____  mc-U  Maskirovka Headquarters       -         0+2P    5/3 - IL
+_____ _____  bt-R  Maskirovka Operatives         Subtrfuge 2+4P    3/1 - IL
+_____ _____  bt-C  Master Spy                    Subtrfuge 1+1L+2P 1/4 - __
+_____ _____  cs-C  'Mech Hangar                  -         2+2L    1/5 - __
+_____ _____  mc-C  'Mech Rotation                -         0+2A+2L  -  - __
+_____ _____  mc-C  'Mech Trap                    Subtrfuge 4+6P     -  - __
+_____ _____  mw-R  MedEvac Team                  -         1+2L    3/1 - I_
+_____ _____  bt-R  Melissa Steiner-Davion        -         2+2P    4/1 U IS
+_____ _____  mc-U  Mercenary Commission Contacts -         0+5P    4/2 - I_
+_____ _____  mc-C  Mercenary Contract            Mercenary 0+6P    1/4 - I_
+_____ _____  mw-U  Merchant Caste                Faction   1+4L    3/6 - C_
+_____ _____  bt-U  Mislabeled Drop Boxes         Subtrfuge 0+2P     -  - __
+_____ _____  bt-C  Misrouted Command             Subtrfuge 3+6P     -  - __
+_____ _____  cs-U  Mobile Long Tom               Artillery 5+4L+4M 0/3 - I_
+_____ _____  bt-R  Morgan Hasek Davion           -         4+4T    1/3 U ID
+_____ _____  mc-R  Myndo Waterly                 -         1+4P    4/2 U I_
+_____ _____  mw-C  NARC Retrofit                 Enhancmnt 0+3T     -  - __
+_____ _____  mw-C  Narrow Valley                 Terrain   3        -  - __
+_____ _____  bt-U  Navigation Computer           Enhancmnt 0+3A     -  - __
+_____ _____  mc-U  Nekekami Sabotage             Subtrfuge 1+4P    0/1 - I_
+_____ _____  cs-R  Oda Hideyoshi                 -         3+4P    1/5 U IK
+_____ _____  mc-R  Omi Kurita                    -         4+6P    4/1 U IK
+_____ _____  mw-U  OmniMech-Pod Cache            -         3+3A+3L 3/3 - __
+_____ _____  bt-R  Open Supply Lines             Operation 0+4P    2/6 - __
+_____ _____  cs-C  Operations Liaison            -         2+2L+4P 1/5 - __
+_____ _____  cs-R  Orbital Bombardment           Operation 5+7P    2/6 - C_
+_____ _____  bt-R  Perimeter Alarm               Enhancmnt 2+2A+4L  -  - __
+_____ _____  bt-U  Phantom Signal                -         1+3A+2L  -  - __
+_____ _____  bt-R  Phelan	                 -         3+4P    4/2 U CW
+_____ _____  cs-U  Pinpoint Air Strike           -         4+7P     -  - __
+_____ _____  bt-C  Point Defense System          Enhancmnt 0+2A+2L  -  - __
+_____ _____  mc-R  Protection Racket             -         0+3P    1/2 - IL
+_____ _____  mc-C  Rapid Deployment              -         0+2L+2T  -  - __
+_____ _____  mc-R  Redjack Ryan                  -         0+4P    3/2 U IS/P_
+_____ _____  mw-R  The Remembrance               -         1+3P+3T  -  - C_
+_____ _____  cs-R  Report from the Norns         Subtrfuge 0        -  - IS
+_____ _____  bt-R  Report from the Watch         Subtrfuge 0+3P     -  - CW
+_____ _____  bt-U  Retrieve Lost 'Mech           Operation 2+4A    2/6 - __
+_____ _____  bt-U  Retrofitted Laser System      Enhancmnt 1+4M     -  - __
+_____ _____  bt-U  Retrofitted Missile Rack      Enhancmnt 2+3M     -  - __
+_____ _____  mw-C  Rocky Gorge                   Terrain   3        -  - __
+_____ _____  mw-C  Rolling Hills                 Terrain   3        -  - __
+_____ _____  bt-R  Romano Liao                   -         0+2P    4/2 U IL
+_____ _____  cs-R  Ryan Steiner                  -         3+3T    4/2 U IS
+_____ _____  bt-R  Sabotaged Heat Sinks          Subtrfuge 0+5P     -  - I_
+_____ _____  bt-R  Sabotaged Missiles            Subtrfuge 0+5P     -  - I_
+_____ _____  bt-C  Sabotage 'Mech                Subtrfuge 1+5P     -  - __
+_____ _____  bt-R  SAFE Report                   Subtrfuge 0        -  - CJ
+_____ _____  bt-U  Salvage Strike Crew           -         2+2L     -  - __
+_____ _____  mc-U  Sandhurst Royal Military Academy -      4+2L+5P 2/3 - I_
+_____ _____  bt-C  Saturation Bombing            -         2+7P     -  - __
+_____ _____  mw-U  Scientist Caste               Faction   1+2M    3/3 - C_
+_____ _____  cs-C  Secured Drop Site             -         2+2L+6P 1/3 - __
+_____ _____  mw-R  Severed Supply Lines          -         1+5P     -  - __
+_____ _____  bt-U  Shady Business                Subtrfuge 5+2L+5P  -  - __
+_____ _____  mc-R  Sharilar Mori                 -         2+5P    4/2 U I_
+_____ _____  mw-R  Simone Devon                  -         2+3P+2T 4/2 U II
+_____ _____  mw-U  Single Combat                 -         3+5T    1/5 - __
+_____ _____  bt-R  Steal 'Mech                   Subtrfuge 4+6P     -  - I_
+_____ _____  mw-U  St. Ives Operations Officer   -         0+4P    4/2 - II
+_____ _____  mw-R  St. Ives Salvage Crew         -         3+3L+3P 4/2 - II
+_____ _____  cs-C  Strafing Run                  -         5+6P     -  - __
+_____ _____  bt-R  Subhash Indrahar              -         1+6P    4/2 U IK
+_____ _____  mc-R  Sun-Tzu Liao                  -         2+4P    5/1 U IL
+_____ _____  mw-R  Support from Home             -         4+5P    2/4 - __
+_____ _____  cs-R  Tactical Nuke                 -         2+6M+4P  -  - __
+_____ _____  bt-R  Takashi Kurita                -         5+6P+3T 4/2 U IK
+_____ _____  mw-C  Targeting Computer Retrofit   Enhancmnt 1+3T     -  - C_
+_____ _____  bt-R  Teachings of the Unfinished Book -      0        -  - ID
+_____ _____  mw-U  Technician Caste              Faction   0+4A    3/6 - C_
+_____ _____  bt-R  Theodore Kurita               -         3+5T    4/2 U IK
+_____ _____  bt-R  Thomas Marik                  -         4+6P    4/2 U IM
+_____ _____  cs-U  Thor Mobile Artillery         Artillery 3+4L+4M 0/3 - I_
+_____ _____  cs-U  Thumper Battery               Artillery 2+2L+2M 0/3 - __
+_____ _____  mw-R  Thunder LRMs                  Enhancmnt 1+2M+2T  -  - __
+_____ _____  mw-U  Time Bomb                     -         1+5M    5/3 - __
+_____ _____  cs-R  Tor Miraborg                  -         3+4T    4/2 U IR
+_____ _____  mc-U  Tracking System Failure       Enhancmnt 1+4P     -  - __
+_____ _____  mw-C  Training Facility             -         0+3T    5/3 - __
+_____ _____  mc-C  Transportation Delay          -         1+2L     -  - __
+_____ _____  bt-C  Treachery!                    Subtrfuge 1+6P     -  - __
+_____ _____  bt-R  Tsen Shang                    -         0+3P    1/3 U IL
+_____ _____  mw-R  Tyra Miraborg                 -         3+4M+3P 4/1 U IR
+_____ _____  cs-R  Ulric Kerensky                -         10+6P   5/2 U CW
+_____ _____  mc-C  Underworld Connections        -         0+2L    0/1 - I_
+_____ _____  mw-U  Unnamed Sources               Subtrfuge 2+6P     -  - __
+_____ _____  mc-R  Vandervahn Chistu             -         4+5P    3/1 U CF
+_____ _____  cs-U  Veteran Officer               -         2+2P+2T 1/5 - __
+_____ _____  mw-U  Warden Faction                Faction   4+6P    3/6 - C_
+_____ _____  mw-U  Warrior Caste                 Faction   1+4T    3/6 - C_
+_____ _____  mw-R  Wolfgang Hansen               Mercenary 2+4T    4/3 U I_
+_____ _____  mw-U  Work Stoppage                 -         3+6P    3/2 - II
+
+
+------------------------------------------------------------------------------
+PILOT (Command)
+------------------------------------------------------------------------------
+ 
+                   Name                          Type      Cost    A/S U House
+                   ----------------------------- --------- ------- --- - -----
+_____ _____  mc-R  Aletha Kabrinski              Pilot     2+1T     -  U CB
+_____ _____  bt-R  Bearer of McKennsy Hammer     Pilot     2+2T     -  - IS
+_____ _____  cs-R  Berserker Warrior             Pilot     0+4T     -  - __
+_____ _____  bt-R  Bjorn Jorgensson              Pilot     3+3T     -  U CB
+_____ _____  bt-R  DEST Pilot                    Pilot     3+4T     -  - IK
+_____ _____  bt-U  Elite MechWarrior             Pilot     1+2T     -  - __
+_____ _____  cs-U  Fanatical Leader              Pilot     2+2T     -  - I_
+_____ _____  bt-R  Galen Cox                     Pilot     1+5T     -  - IS
+_____ _____  mw-C  Gearhead                      Pilot     0+2A+2T  -  - I_
+_____ _____  bt-U  Gray Death Pilot              Pilot     0+2T     -  - I_
+_____ _____  mw-R  Headhunter                    Pilot     1+3T     -  - __
+_____ _____  mc-R  Hohiro Kurita                 Pilot     2+4P+2T  -  U IK
+_____ _____  bt-R  Jaime Wolf                    Pilot     4+5T     -  U IW
+_____ _____  bt-R  Kai Allard-Liao               Pilot     5+7T     -  - ID/II
+_____ _____  mw-R  Kai, Champion of Solaris      Pilot     6+4T     -  U ID/II
+_____ _____  bt-U  Kamikaze MechWarrior          Pilot     2+2T     -  - IK
+_____ _____  bt-U  Kell Hound Pilot              Pilot     0+3T     -  - I_
+_____ _____  bt-U  Lance Commander               Pilot     0+3T     -  - I_
+_____ _____  bt-U  Maneuvering Ace               Pilot     0+3T     -  - __
+_____ _____  bt-U  Maverick Mechjock             Pilot     0+3T     -  - __
+_____ _____  bt-R  Morgan Kell                   Pilot     4+5T     -  U I_
+_____ _____  bt-R  Natasha Kerensky              Pilot     5+5T     -  U CW
+_____ _____  mw-R  Phelan Ward                   Pilot     3+4P+4T  -  U CW
+_____ _____  mw-R  Prince Victor Steiner-Davion  Pilot     6+4T     -  U ID
+_____ _____  cs-U  Recon Pilot                   Pilot     0+4T     -  - __
+_____ _____  mw-C  Redline Pilot                 Pilot     3+2T     -  - __
+_____ _____  mc-R  Rhonda Snord                 Pilot/Merc 3+3P+3T  -  U I_
+_____ _____  mw-R  Ristar MechWarrior            Pilot     1+4T     -  - C_
+_____ _____  bt-R  Rookie Pilot                  Pilot     2+6P     -  - __
+_____ _____  mw-C  Sharpshooter                  Pilot     1+2T     -  - __
+_____ _____  mw-R  Shin Yodama                   Pilot     2+3L+3T  -  U IK
+_____ _____  bt-R  Silver Sunburst Pilot         Pilot     0+2T     -  - ID
+_____ _____  mw-R  Solaris Games Veteran         Pilot     3+4T     -  U I_
+_____ _____  mc-U  Targeting Ace                 Pilot     1+2T     -  - __
+_____ _____  bt-C  Veteran MechWarrior           Pilot     1+2T     -  - __
+_____ _____  bt-R  Victor Steiner Davion         Pilot     5+6T    5/2 U ID/IS
+_____ _____  cs-R  Vlad of the Wards             Pilot     2+5T     -  U CW
+_____ _____  bt-U  Wolf's Dragoons Pilot         Pilot     1+4T     -  - I_
+
+
+------------------------------------------------------------------------------
+RESOURCES (Command)
+------------------------------------------------------------------------------
+ 
+                   Name                                  Ass Cost    A/S House
+                   ------------------------------------- --- ------- --- -----
+_____ _____  mc-U  Assault 'Mech Specialists              -  1+3L    2/3 I_
+_____ _____  cs-U  Black Market Connections               -  2       4/1 __
+_____ _____  cs-C  Blood of Kerensky                      P  2+2P    5/1 CW
+_____ _____  mc-R  Booty Cache                            -  2+4P    3/2 __
+_____ _____  bt-U  Comstar Bank Account                   -  0+2A    1/5 I_
+_____ _____  mc-U  ComStar Investment                     -  4+4P    4/2 I_
+_____ _____  mc-R  ComStar News Bureau                    -  3+4P    2/1 __
+_____ _____  mc-C  ComStar Support                        -  1       3/3 I_
+_____ _____  bt-V  Coventry Metal Works                   M  0+2P    4/2 IS
+_____ _____  cs-C  Earthwerks Limited                     A  2+2P    4/2 IL
+_____ _____  bt-C  Expert 'Mech Technicians               -  2+2L    1/6 __
+_____ _____  cs-C  Field Command Post                     -  2       5/1 __
+_____ _____  cs-C  Field Construction Site                -  0       5/3 __
+_____ _____  bt-V  Heavy Industry                         -  0       4/1 __
+_____ _____  cs-C  Lostech Cache                          -  0       4/1 I_
+_____ _____  bt-V  Marik Arms Trade                       M  1+2M    5/1 IM
+_____ _____  cs-C  Master Scrounger                       A  1       5/1 __
+_____ _____  mc-C  Mercenary Relations Division           -  1+3P    1/4 I_
+_____ _____  bt-C  Mobile HQ                              T  0+2L    4/1 __
+_____ _____  bt-V  NAIS                                   T  3       4/1 ID
+_____ _____  bt-U  Operation Advisory Council             -  2+2L    1/5 __
+_____ _____  mc-C  Outreach Mercenary Training           P/T 1       3/3 I_
+_____ _____  mc-C  Repair Facility                        A  0+3A     -  __
+_____ _____  mw-C  Salvage Yard                           -  1+2L    4/3 __
+_____ _____  bt-V  Scrounger Crew                         -  1       3/1 __
+_____ _____  mw-C  Solaris Contacts                       -  1+4T    5/3 I_
+_____ _____  bt-C  Specialized Project Team               -  0       1/7 __
+_____ _____  mw-U  Staging Ground                         -  1+2L    2/3 IR
+_____ _____  mc-C  Strip Mining Operation                 -  1+2L    2/5 __
+_____ _____  bt-V  Sun Zhang MechWarrior Academy          T  2       5/2 IK
+_____ _____  bt-V  Support: Assembly {A=Big Window}       A  0       4/3 __
+_____ _____  bt-V  Support: Assembly {B=Mech Faces Left}  A  0       4/3 __
+_____ _____  bt-V  Support: Assembly {C=Mech Faces Fwd}   A  0       4/3 __
+_____ _____  bt-V  Support: Logistics {A=Airport}         L  0       4/3 __
+_____ _____  bt-V  Support: Logistics {B=Underground}     L  0       4/3 __
+_____ _____  bt-V  Support: Logistics {C=Drop Ships}      L  0       4/3 __
+_____ _____  bt-V  Support: Munitions {A=Crane}           M  0       4/3 __
+_____ _____  bt-V  Support: Munitions {B=Missile Tests}   M  0       4/3 __
+_____ _____  bt-V  Support: Munitions {C=Gun Tests}       M  0       4/3 __
+_____ _____  bt-V  Support: Politics {A=Soldier}          P  0       4/3 __
+_____ _____  bt-V  Support: Politics {B=Dish}             P  0       4/3 __
+_____ _____  bt-V  Support: Politics {C=People}           P  0       4/3 __
+_____ _____  bt-V  Support: Tactics {A=Firing Line}       T  0       4/3 __
+_____ _____  bt-V  Support: Tactics {B=Classroom}         T  0       4/3 __
+_____ _____  bt-V  Support: Tactics {C=Holograms}         T  0       4/3 __
+_____ _____  bt-V  Think Tank                             -  0       5/1 __
+
+
+------------------------------------------------------------------------------
+MISSIONS
+------------------------------------------------------------------------------
+ 
+                   Name                             House
+                   -------------------------------- -----
+_____ _____  mw-U  Accidental Collision             __
+_____ _____  bt-C  Accurate Intelligence            __
+_____ _____  bt-U  Ammo Explosion                   __
+_____ _____  cs-U  Bait and Switch                  __
+_____ _____  mc-R  Batchall                         __   
+_____ _____  cs-R  Blitzkrieg                       IM
+_____ _____  cs-R  Blow the Pass!                   I_
+_____ _____  mw-C  Brutal Punch                     I_
+_____ _____  mw-R  Charge!                          I_
+_____ _____  mc-C  Com Guard Response Team          I_  
+_____ _____  bt-R  Communications Failure           __
+_____ _____  cs-U  Cover of Night                   __
+_____ _____  bt-C  Critical Hit                     __
+_____ _____  bt-U  Death From Above                 __
+_____ _____  cs-C  Defensive Formation              __
+_____ _____  cs-C  Deploy Reinforcements            __
+_____ _____  mc-U  Disrupted Supply Lines           __  
+_____ _____  mw-U  DropShip Intercept               II
+_____ _____  cs-C  End Run                          __
+_____ _____  mw-R  Evasive Maneuvers                __
+_____ _____  mw-U  Expert Timing                    __
+_____ _____  bt-C  Feint                            __
+_____ _____  bt-C  Forged Mission Orders            __
+_____ _____  cs-U  For the Chancellor!              IL
+_____ _____  mw-R  Fortunes of War                  __
+_____ _____  bt-C  Good Shooting!                   __
+_____ _____  cs-U  Hazardous Battle Zone            __
+_____ _____  bt-U  Head Shot                        __
+_____ _____  bt-U  Heavy Fog                        __
+_____ _____  bt-C  Heroic Sacrifice                 __
+_____ _____  cs-R  Hip Shattered                    __
+_____ _____  bt-U  Improvised Weapon                I_
+_____ _____  bt-C  Inexorable Advance               __
+_____ _____  bt-U  Jump Into Cover                  __
+_____ _____  cs-C  Lance Diversion                  I_
+_____ _____  cs-C  Lance Formation                  I_
+_____ _____  mc-U  Last Stand at Hanover            I_  
+_____ _____  bt-U  Leap Before You Look             __
+_____ _____  bt-R  Luck of the Fox                  ID
+_____ _____  bt-U  Lured Into Bog                   __
+_____ _____  cs-R  Massive Battlefield Confusion    __
+_____ _____  cs-C  Minefield                        __
+_____ _____  bt-U  Missile Spotter                  I_
+_____ _____  bt-C  Move to Partial Cover            __
+_____ _____  cs-R  No Quarter                       __
+_____ _____  cs-C  Overrun                          __
+_____ _____  bt-U  Overwhelm                        I_
+_____ _____  bt-R  Pryde's Pride                    CF
+_____ _____  bt-U  Pushing the Envelope             __
+_____ _____  cs-U  Quick Salvage Operation          __
+_____ _____  bt-R  Rampage!                         __
+_____ _____  bt-U  Rapid Cool-Down                  __
+_____ _____  mc-R  Reactor Breach                   __  
+_____ _____  bt-R  Reassigned Pilot                 __
+_____ _____  mc-U  Relentless Assault               __  
+_____ _____  cs-U  Risky Combat Jump                __
+_____ _____  bt-U  Running Battle                   __
+_____ _____  bt-R  Sacrifice for the Dragon!        IK
+_____ _____  bt-R  Satchel Charges                  __
+_____ _____  mw-R  Sibko Allegiance                 C_
+_____ _____  bt-U  Special Forces Op                __
+_____ _____  cs-C  Star Diversion                   C_
+_____ _____  cs-C  Star Formation                   C_
+_____ _____  bt-C  Strength of the Pillar of Steel  IK
+_____ _____  bt-U  Studied Move                     __
+_____ _____  cs-R  Superior Navigation              __
+_____ _____  mc-C  Tactical Advantage               __  
+_____ _____  mw-C  Tactical Superiority             __
+_____ _____  mc-C  Taking the Hit                   __  
+_____ _____  bt-U  Temporary Cease-Fire             __
+_____ _____  bt-C  Topple                           I_
+_____ _____  cs-R  Trapped!                         __
+_____ _____  mc-C  Unopposed                        __
+_____ _____  cs-C  Vicious Kick                     I_
+
+
+==============================================================================
+

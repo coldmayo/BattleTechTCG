@@ -350,7 +350,7 @@ class BattleTechEnv(gym.Env):
                             print("Model did", attack, "damage to the enemy's stockpile")
                             #print(self.model_deck, "\n\n", self.enemy_deck, "\n")
                             for i in range(attack):
-                                print(len(self.enemy_deck["stock"]), len(self.model_deck["stock"]))
+                                #print(len(self.enemy_deck["stock"]), len(self.model_deck["stock"]))
                                 self.enemy_deck = self.move_card("enemy", "stock", "scrap heap", 0)
                             self.mechStatus()
                         else:

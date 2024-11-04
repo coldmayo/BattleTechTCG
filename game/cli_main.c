@@ -66,14 +66,7 @@ void execute(int choice) {
 			sleep(2);
         	break;
 		case 1:
-			char iter_num[50];
-			char enter[50] = "cd ../AI ; ./train.sh";
-			printf("How many iterations?: ");
-			if (fgets(iter_num, sizeof(iter_num), stdin) != NULL) {
-				strcat(enter, " ");
-				strcat(enter, iter_num);
-			}
-    		system(enter);
+    		system("cd ../AI ; ./train.sh");
     		sleep(2);
     		break;
     	case 2:
@@ -84,8 +77,7 @@ void execute(int choice) {
             search_card();
             break;
         case 4:
-            //printf("In construction\n");
-			deck();
+            deck();
             sleep(2);
             break;
 	}

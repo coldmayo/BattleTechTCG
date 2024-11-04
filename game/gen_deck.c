@@ -36,11 +36,10 @@ char ** show_cards(char * inp, char ** names, char ** deck, int deck_size) {
 	printf("\e[1;1H\e[2J");
 	printf("[1]--|%s\n[2]--|%s\n[3]--|%s\n", final[0] ? final[0] : "None", final[1] ? final[1] : "None", final[2] ? final[2] : "None");
 	printf("If you would like to exit, press the Escape Key\n");
-	printf("Current Deck: ");
+	printf("Current Deck: \n");
 
 	for (i = 0; i < deck_size; i++) {
-		printf("\n%s", deck[i]);
-		i++;
+		printf("[%d] %s", i+1, deck[i]);
 	}
 
 	printf("Search for a Card: %s", inp);
@@ -53,17 +52,19 @@ char * add_card(char ** finals) {
 	char buff = getchar();
 	if (buff == '1' || buff == '2' || buff == '3') {
 		int index = buff - '1';
-		printf("\e[1;1H\e[2J");
-		printf("%s\n", finals[index]);
-		return finals[index];
+		//printf("%s\n", finals[index]);
+		return strdup(finals[index]);
 	}
 	return NULL;
 }
 
 bool in_deck(char * card, char ** deck) {
 	int i = 0;
-
+	printf("%s and %s\n", card, deck[i]);
 	while (deck[i] != NULL) {
+    	if (card == NULL || deck[i] == NULL) {
+			return false;
+    	}
 		if (strcmp(card, deck[i]) == 0) {
 			return true;
 		}
@@ -109,7 +110,10 @@ char ** remove_card(char * card, char ** deck) {
 
 void deck() {
 	char ** names = get_card_names();
-	char ** deck = malloc(60 * sizeof(char *));
+	char ** deck = malloc(61 * sizeof(char *));
+	for (int i=0; i < 61; i++) {
+		deck[i] = NULL;
+	}
 	//int * deck_num = malloc(60 * sizeof(char *));
 	char * inputted = malloc(100 * sizeof(char));
 	inputted[0] = '\0';
@@ -121,14 +125,23 @@ void deck() {
 	int deck_size = 0;
 
 	while (true) {
-		char ** finals;
+		char ** finals = NULL;
 		char * new_card = NULL;
 		if (strlen(inputted) > 0) {
 			finals = show_cards(inputted, names, deck, deck_size);
 		} else {
 			printf("\e[1;1H\e[2J");
-			printf("If you would like to exit, press the Escape Key\n");
-			printf("Current Deck:\n\n");
+			if (deck_size < 60) {
+				printf("If you would like to exit, press the Escape Key\n");
+			} else {
+				printf("If you would like to exit, press the Escape Key\nIf you want to save your deck use + at add it\n");
+			}
+			printf("Current Deck:\n");
+			if (deck[0] != NULL) {
+				for (int i = 0; i < deck_size; i++) {
+					printf("[%d] %s", i+1, deck[i]);
+				}
+			}
 			printf("Search for a Card: ");
 		}
 
@@ -145,17 +158,64 @@ void deck() {
 						deck = remove_card(new_card, deck);
 						deck_size--;
 					} else {
-						deck[deck_size++] = new_card;
+						while (true) {
+							printf("How many?: ");
+							char num = getchar();
+							if (num == 27) {
+								break;
+							}
+							int nu = num - '0';
+
+							if (deck_size+nu < 61) {
+								for (int i = 0; i < nu; i++) {
+									deck[deck_size++] = strdup(new_card);
+								}
+								break;
+							} else {
+								printf("Too many, try again\n");
+							}
+						}
 					}
-    			} else if (deck_size < 60) {
-					deck[deck_size++] = strdup(new_card);
+    			} else if (deck_size < 61) {
+					while (true) {
+						printf("How many?: ");
+						char num = getchar();
+						if (num == 27) {
+							break;
+						}
+						int nu = num - '0';
+
+						if (deck_size+nu < 61) {
+							for (int i = 0; i < nu; i++) {
+								deck[deck_size++] = strdup(new_card);
+							}
+							break;
+						} else {
+							printf("Too many, try again\n");
+						}
+					}
     			} else {
 					printf("Deck must have only 60 cards");
 					sleep(2);
     			}
+				printf("\e[1;1H\e[2J");
 			}
 		} else if (buff == 27) {
 			break;
+		} else if (buff == 43 && deck_size == 60) {
+    		printf("\e[1;1H\e[2J");
+			printf("Saving...\n");
+			printf("What should the deck be called: ");
+			char * filename = "deck1.txt";
+			FILE * fp = fopen(filename, "w+");
+
+			for (int i = 0; i < deck_size; i++) {
+				fprintf(fp, "%s", deck[i]);
+			}
+
+			fclose(fp);
+			break;
+			
 		} else if (buff == 127 && pos > 0) {
 			inputted[--pos] = '\0';
 		} else if (pos < 100-1 && buff != 127) {
