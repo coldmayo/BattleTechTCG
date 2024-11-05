@@ -29,14 +29,14 @@ def gen_deck(faction):
                 elif "Mission" in card_type:
                     miss.append({"id": card_data["id"][i], "Card Title": card_data["Card Title"][i], "Asset": card_data["Asset"][i], "Card Type": card_data["Card Type"][i], "Speed": card_data["Speed"][i], "Cost": card_data["Cost"][i], "Arm/Str/Att": card_data["Arm/Str/Att"][i], "Rarity": card_data["Rarity"][i], "curr str": 0})
 
-    for i in np.random.choice(mechs, 24, replace = True):
+    for i in np.random.choice(mechs, 30, replace = True):
         cards.append(i)
         
-    for i in np.random.choice(res, 24, replace = True):
+    for i in np.random.choice(res, 30, replace = True):
         cards.append(i)
 
-    for i in np.random.choice(miss, 12, replace = True):
-        cards.append(i)
+    #for i in np.random.choice(miss, 12, replace = True):
+    #    cards.append(i)
     #print(random.shuffle(cards))
     shuffle_num = np.random.randint(0, 10)
     for i in range(shuffle_num):

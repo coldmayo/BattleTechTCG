@@ -31,7 +31,6 @@ def pad_tensor(tensor, target_shape):
     return torch.tensor(F.pad(tensor, padding, mode='constant', value=0)).requires_grad_()
 
 def filter_q(deck, q, filter="hand"):
-    ret = []
     ids = []
     if filter == "hand":
         
@@ -39,32 +38,18 @@ def filter_q(deck, q, filter="hand"):
             if "Mission" not in i["Card Type"]:
                 ids.append(i["id"])
                 
-        for i in range(len(q)):
-            if i not in ids:
-                ret.append(0)
-            else:
-                ret.append(q[i])
     elif filter == "mission":
         
         for i in deck["hand"]:
             if "Mission" in i["Card Type"]:
                 ids.append(i["id"])
                 
-        for i in range(len(q)):
-            if i not in ids:
-                ret.append(0)
-            else:
-                ret.append(q[i])
     elif filter == "mech":
+
         for i in deck["patrol"]:
             ids.append(i["id"])
-
-        for i in range(len(q)):
-            if i not in ids:
-                ret.append(0)
-            else:
-                ret.append(q[i])
-    return ret
+            
+    return np.where(np.isin(np.arange(len(q)), ids), q, 0).tolist()
 
 def find_id(card, model_deck):
     for i in range(len(model_deck["all cards"])):
@@ -78,13 +63,17 @@ def random_action(model_deck):
     heal_mech = 0
     attack = 0
     move_mech = np.zeros(len(model_deck["all cards"]))
-
+    count = 0
+    
     for i in range(len(model_deck["hand"])):
         if "Mission" not in model_deck["hand"][i]["Card Type"]:
             choi = int(np.random.choice([0, 1], 1))
 
             if choi == 1:
                 deploy[find_id(model_deck["hand"][i], model_deck)] = 1
+                count += 1
+                if count == 2:
+                    break
 
     avail = []
     for i in model_deck["hand"]:
@@ -153,19 +142,25 @@ def select_action(env, state, steps_done, policy_net, model_deck):
                 q_vals = dec[i]
                 #print(len(q_vals.numpy().tolist()[0]), "\n")
                 if type(q_vals.numpy().tolist()[0]) == list:
-                    q_vals = q_vals.numpy().tolist()[0]
+                    q_vals = q_vals.squeeze().tolist()
                 else:
                     q_vals = q_vals.numpy().tolist()
                 if i == 0:   # deploy action
-                    chosen = []
+                    chosen = np.zeros(len(model_deck["all cards"]))
                     q_vals = np.array(filter_q(model_deck, q_vals))
 
-                    for i in q_vals:
-                        if i > 0.5:
-                            chosen.append(1)
-                        else:
-                            chosen.append(0)
-                    action.append(chosen)
+                    high = 0
+                    sec_high = 0
+
+                    for i in range(len(q_vals)):
+                        if i > high:
+                            sec_high = high
+                            high = i
+                        elif i > sec_high:
+                            sec_high = i
+                    chosen[high] = 1
+                    chosen[sec_high] = 1
+                    action.append(chosen.tolist())
                 elif i == 1:   # mission action
                         
                     q_vals = filter_q(model_deck, q_vals, "mission")
@@ -268,25 +263,37 @@ def optimize_model(policy_net, target_net, optimizer, memory, n_obs, model_deck)
     next_state_values = torch.zeros(BATCH_SIZE, len(arr), device=device)
     with torch.no_grad():
         dec = target_net(torch.tensor(np.array(non_final_next_states).reshape(128, 3150)))
+        #next_state_values[non_final_mask] = torch.tensor(dec).max(1)[0].detach()
         actions = []
         for i in range(len(dec)):
             q_vals = dec[i].numpy().tolist()[0]
             if i == 0:
-                chosen = []
+                chosen = np.zeros(len(q_vals))
                 q_vals = np.array(filter_q(model_deck, q_vals))
-                for val in q_vals:
-                    chosen.append(1 if val > 0.5 else 0)
-                actions.append(chosen)
+                high = [0, 0]
+                sec_high = [0, 0]
+                for i in range(len(q_vals)):
+                    if q_vals[i] > high[0]:
+                        sec_high[0] = high[0]
+                        sec_high[1] = high[1]
+
+                        high[0] = q_vals[i]
+                        high[1] = i
+                    elif q_vals[i] > sec_high[0]:
+                        sec_high[0] = q_vals[i]
+                        sec_high[1] = i
+
+                chosen[high[1]] = 1
+                chosen[sec_high[1]] = 1
+                actions.append(chosen.tolist())
             elif i in [1, 2]:
                 q_vals = filter_q(model_deck, q_vals, "mission" if i == 1 else "mech")
                 actions.append([np.argmax(q_vals)])
             elif i == 3:
                 actions.append([np.argmax(q_vals)])
             elif i == 4:
-                chosen = []
                 q_vals = filter_q(model_deck, q_vals, "mech")
-                for val in q_vals:
-                    chosen.append(1 if val > 0.5 else 0)
+                chosen = np.where(q_vals == np.max(q_vals), 1, 0)
                 actions.append(chosen)
 
         act = populate_arr(actions)

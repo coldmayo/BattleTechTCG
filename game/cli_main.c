@@ -6,6 +6,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include "searchCard.h"
+#include "gen_deck.h"
 
 void show_select(int choice) {
     printf("\e[1;1H\e[2J");
@@ -65,7 +66,12 @@ void execute(int choice) {
 			sleep(2);
         	break;
 		case 1:
-    		system("cd ../AI ; ./train.sh");
+			char num[10];
+			char comm[25] = "cd ../AI ; ./train.sh ";
+    		printf("How many epochs: ");
+    		fgets(num, 10, stdin);
+    		strcat(comm, num);
+			system(comm);
     		sleep(2);
     		break;
     	case 2:
@@ -76,7 +82,7 @@ void execute(int choice) {
             search_card();
             break;
         case 4:
-            printf("In construction\n");
+            deck();
             sleep(2);
             break;
 	}
